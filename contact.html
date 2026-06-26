@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact ｜ Everglow</title>
+<meta name="description" content="Everglow へのご予約・お問い合わせ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hd">
+  <a class="hd__logo" href="index.html">Everglow.</a>
+  <nav class="hd__nav"><a href="our-salon.html">Our Salon</a><a href="menu.html">Menu</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="access.html">Access</a></nav>
+  <a class="btn btn--gold hd__cta" href="contact.html" style="height:42px;padding:0 22px;">予約する</a>
+  <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</header>
+<div class="panel" id="panel">
+  <button class="burger panel__close" id="panelClose" aria-label="閉じる"><span></span><span></span><span></span></button>
+  <a href="index.html">Home<small>ホーム</small></a>
+  <a href="our-salon.html">Our Salon<small>サロンについて</small></a>
+  <a href="menu.html">Menu<small>メニュー</small></a>
+  <a href="gallery.html">Gallery<small>ギャラリー</small></a>
+  <a href="blog.html">Blog<small>お知らせ</small></a>
+  <a href="access.html">Access<small>アクセス</small></a>
+  <a href="contact.html">Contact<small>ご予約・お問い合わせ</small></a>
+  <div class="panel__sns">
+    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 22v-8h2.7l.4-3.4h-3.1V8.4c0-1 .27-1.65 1.7-1.65h1.5V3.7c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.23H7.8V14h2.4v8h3z"/></svg></a>
+    <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h2.7l-5.9 6.75L21.6 21h-5.43l-4.25-5.56L6.86 21H4.15l6.3-7.2L3.6 3h5.57l3.84 5.08L17.5 3zm-.95 16.4h1.5L8.02 4.5H6.4l10.15 14.9z"/></svg></a>
+  </div>
+</div>
+<section class="subhero"><span class="ghost" aria-hidden="true">Contact</span><span class="en">Contact</span><span class="jp">ご予約・お問い合わせ</span></section>
+<main class="page"><div class="wrap">
+  <p class="lede" data-rev>ご予約・ご相談は、下記フォームまたはお電話で承ります。<br>2〜3営業日以内にご返信いたします（完全予約制）。</p>
+  <form class="form" data-rev onsubmit="alert('デモのため送信は行われません。');return false;">
+    <div class="field"><label>お名前<span class="req">必須</span></label><input type="text" placeholder="山田 花子" required></div>
+    <div class="field"><label>メールアドレス<span class="req">必須</span></label><input type="email" placeholder="example@mail.com" required></div>
+    <div class="field"><label>電話番号</label><input type="tel" placeholder="090-0000-0000"></div>
+    <div class="field"><label>ご希望メニュー</label><select><option>選択してください</option><option>カット</option><option>カラー</option><option>パーマ</option><option>トリートメント・スパ</option><option>その他・相談</option></select></div>
+    <div class="field"><label>ご希望日時</label><input type="text" placeholder="例：6月20日（土）午後 など"></div>
+    <div class="field"><label>お問い合わせ内容</label><textarea placeholder="ご相談・ご質問などをご記入ください。"></textarea></div>
+    <button class="btn btn--gold btn--block" type="submit">送信する →</button>
+    <p class="form__note">※ デモサイトのため送信は動作しません。<br>お電話でのご予約：<a class="ul" href="tel:0466000000" style="color:var(--text);">0466-xx-xxxx</a></p>
+  </form>
+</div></main>
+
+<footer class="ft">
+  <div class="wrap">
+    <h3 class="ft__h">Salon</h3>
+    <div class="ft__salon">
+      <a class="ul" href="access.html">神奈川県藤沢市〇〇 0-0-0</a><br>
+      平日 10:00–19:00 ／ 土日祝 9:00–18:00<br>
+      定休日 毎週月曜日<br>
+      <a class="ul" href="tel:0466000000">0466-xx-xxxx</a>
+    </div>
+    <hr class="ft__hr">
+    <h3 class="ft__h">Pages</h3>
+    <nav class="ft__pages"><a href="index.html">Home</a><a href="our-salon.html">Our Salon</a><a href="menu.html">Menu</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="access.html">Access</a><a class="cur" href="contact.html">Contact</a></nav>
+    <hr class="ft__hr">
+    <h3 class="ft__h">SNS</h3>
+    <div class="ft__sns">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 22v-8h2.7l.4-3.4h-3.1V8.4c0-1 .27-1.65 1.7-1.65h1.5V3.7c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.23H7.8V14h2.4v8h3z"/></svg></a>
+      <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h2.7l-5.9 6.75L21.6 21h-5.43l-4.25-5.56L6.86 21H4.15l6.3-7.2L3.6 3h5.57l3.84 5.08L17.5 3zm-.95 16.4h1.5L8.02 4.5H6.4l10.15 14.9z"/></svg></a>
+    </div>
+    <hr class="ft__hr">
+    <div class="ft__brand"><div class="ft__logo">Everglow.</div><div class="ft__copy">© 2026 Everglow</div></div>
+  </div>
+</footer>
+<a class="fab" id="fab" href="contact.html" aria-label="ご予約はこちら">
+  <span class="fab__ripple"></span><span class="fab__ripple"></span><span class="fab__ripple"></span>
+  <span class="fab__core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg><span class="fab__txt">予約</span></span>
+</a>
+<script src="app.js" defer></script>
+</body>
+</html>

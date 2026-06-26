@@ -1,0 +1,14 @@
+# Netlify ビルド設定
+# microCMS の記事を取得して静的HTMLを生成し、ルートを公開する。
+# 環境変数（Netlify管理画面 → Site settings → Environment variables）に
+#   MICROCMS_SERVICE_DOMAIN = everglow
+#   MICROCMS_ENDPOINT       = news
+#   MICROCMS_API_KEY        = （再発行したキー）
+# を設定すること（.env はリポジトリに含めない）。
+
+[build]
+  command = "npm run build"
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"

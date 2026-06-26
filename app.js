@@ -1,0 +1,11 @@
+const burger=document.getElementById('burger'),panel=document.getElementById('panel'),pc=document.getElementById('panelClose');
+  const toggle=()=>{const o=panel.classList.toggle('open');burger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';};
+  burger.addEventListener('click',toggle);
+  pc.addEventListener('click',toggle);
+  panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{panel.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';}));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('[data-rev]').forEach(el=>io.observe(el));
+  document.querySelectorAll('.sec__title').forEach(t=>{const en=t.querySelector('.en');if(!en)return;const g=document.createElement('span');g.className='sec__ghost';g.textContent=en.textContent;g.setAttribute('aria-hidden','true');t.insertBefore(g,t.firstChild);});
+  const fab=document.getElementById('fab');
+  const fabScroll=()=>fab.classList.toggle('show',scrollY>420);
+  addEventListener('scroll',fabScroll,{passive:true});fabScroll();
