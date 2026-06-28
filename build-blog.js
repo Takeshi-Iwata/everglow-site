@@ -152,18 +152,25 @@ const ph = (cls, comment) => `<div class="ph ${cls}">${comment ? `<!-- ${comment
 function buildIndex(posts) {
   const cards = posts
     .map(
-      (p) => `    <a class="bcard" href="blog-${p.slug}.html">${p.cover ? `<img class="bcard__img" src="${p.cover}" alt="">` : ph('bcard__img')}<div class="bcard__meta"><span class="bcard__cat">${esc(p.category)}</span><span class="bcard__date">${esc(p.date)}</span></div><h3 class="bcard__ttl">${esc(p.title)}</h3><p class="bcard__ex">${esc(p.excerpt)}</p></a>`
+      (p) => `    <a class="bcard" href="blog-${p.slug}.html" data-cat="${esc(p.category)}">${p.cover ? `<img class="bcard__img" src="${p.cover}" alt="">` : ph('bcard__img')}<div class="bcard__meta"><span class="bcard__cat">${esc(p.category)}</span><span class="bcard__date">${esc(p.date)}</span></div><h3 class="bcard__ttl">${esc(p.title)}</h3><p class="bcard__ex">${esc(p.excerpt)}</p></a>`
     )
     .join('\n');
+  // チップは実在カテゴリから生成（好みの並び順を優先し、未知のものは後ろに付ける）
+  const PREFERRED = ['お知らせ', 'スタイル', 'ヘアケア', 'カラー'];
+  const present = [...new Set(posts.map((p) => p.category))];
+  const cats = [...PREFERRED.filter((c) => present.includes(c)), ...present.filter((c) => !PREFERRED.includes(c))];
+  const chips = `<div class="chips" data-rev><a class="on" href="#" data-cat="">すべて</a>${cats
+    .map((c) => `<a href="#" data-cat="${esc(c)}">${esc(c)}</a>`)
+    .join('')}</div>`;
   const html = `${docHead('Blog', 'Everglow からのお知らせ・ブログ。')}
 ${header()}
 <section class="subhero"><span class="ghost" aria-hidden="true">Blog</span><span class="en">Blog</span><span class="jp">お知らせ・ブログ</span></section>
 <main class="page"><div class="wrap">
-  <div class="chips" data-rev><a class="on" href="#">すべて</a><a href="#">お知らせ</a><a href="#">スタイル</a><a href="#">ヘアケア</a><a href="#">カラー</a></div>
-  <div data-rev>
+  ${chips}
+  <div class="blist" data-rev>
 ${cards}
   </div>
-  <div class="pager" data-rev><a class="on" href="#">1</a><a href="#">2</a><a href="#">→</a></div>
+  <p class="bempty" hidden>このカテゴリの記事はまだありません。</p>
 </div></main>
 ${resv()}
 ${footer('blog.html')}
@@ -201,6 +208,30 @@ ${docFoot}`;
   fs.writeFileSync(path.join(DIR, `blog-${p.slug}.html`), html);
 }
 
+/* ---------- トップページの新着ブログ（最新3件を index.html に差し込む） ---------- */
+function patchIndexNews(posts) {
+  const idx = path.join(DIR, 'index.html');
+  if (!fs.existsSync(idx)) return;
+  let html = fs.readFileSync(idx, 'utf8');
+  const re = /(<ul class="news__list"[^>]*>)[\s\S]*?(<\/ul>)/;
+  if (!re.test(html)) {
+    console.warn('index.html に news__list が見つからず、トップ新着の更新をスキップ');
+    return;
+  }
+  const items = posts
+    .slice(0, 3)
+    .map(
+      (p) =>
+        `        <li><a href="blog-${p.slug}.html"><span class="news__meta"><span class="news__cat">${esc(p.category)}</span><span class="news__date">${esc(p.date)}</span></span><span class="news__ttl">${esc(p.title)}</span></a></li>`
+    )
+    .join('\n');
+  const next = html.replace(re, `$1\n${items}\n      $2`);
+  if (next !== html) {
+    fs.writeFileSync(idx, next);
+    console.log('index.html のトップ新着を最新3件に更新');
+  }
+}
+
 /* ---------- 実行 ---------- */
 (async () => {
   // 既存の生成物を掃除（slugが変わっても孤児ページを残さない）
@@ -210,6 +241,7 @@ ${docFoot}`;
   const posts = await loadPosts();
   buildIndex(posts);
   posts.forEach((p, i) => buildArticle(p, posts, i));
+  patchIndexNews(posts);
   console.log(`生成完了: blog.html + ${posts.length} 記事ページ`);
 })().catch((e) => {
   console.error(e);

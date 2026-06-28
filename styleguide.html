@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style Guide ｜ Everglow Design System</title>
+<meta name="description" content="Everglow サイトのデザインシステム。Figma のバリアブル（カラー・タイポ・スペーシング）とコンポーネントを 1:1 で実装したスタイルガイド。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .sg{padding:clamp(36px,6vw,64px) 0;}
+  .sg__lead{font-size:14px;color:var(--text-subtle);line-height:1.9;margin-bottom:40px;}
+  .sg__lead b{color:var(--text);}
+  .sg__sec{margin-bottom:clamp(44px,7vw,64px);}
+  .sg__h{font-family:var(--en);font-size:26px;font-weight:600;letter-spacing:.05em;color:var(--gold);border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:6px;}
+  .sg__desc{font-size:12.5px;color:var(--text-subtle);line-height:1.8;margin-bottom:22px;}
+  .sg__sub{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-subtle);margin:26px 0 12px;}
+  /* color ramps */
+  .sg-ramp{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:6px;}
+  .sg-sw{border-radius:6px;border:1px solid var(--border-subtle);overflow:hidden;}
+  .sg-sw__c{height:50px;}
+  .sg-sw__t{padding:5px 7px 7px;background:var(--c-surface);display:flex;flex-direction:column;gap:1px;}
+  .sg-sw__t b{font-size:11px;font-weight:600;}
+  .sg-sw__t span{font-size:10px;color:var(--text-subtle);font-family:var(--en);letter-spacing:.03em;}
+  /* semantic token rows */
+  .sg-toks{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px 18px;}
+  .sg-tok{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-subtle);}
+  .sg-tok__c{width:42px;height:42px;border-radius:8px;border:1px solid var(--border-subtle);flex:none;}
+  .sg-tok__n{font-size:12.5px;line-height:1.4;}
+  .sg-tok__n small{display:block;color:var(--text-subtle);font-size:11px;font-family:var(--en);letter-spacing:.02em;}
+  /* type */
+  .sg-type{padding:13px 0;border-bottom:1px solid var(--border-subtle);}
+  .sg-type small{display:block;font-size:11px;color:var(--text-subtle);font-family:var(--en);letter-spacing:.05em;margin-top:5px;}
+  /* spacing */
+  .sg-sp{display:flex;align-items:center;gap:14px;padding:5px 0;font-size:12px;color:var(--text-subtle);}
+  .sg-sp__n{width:130px;flex:none;font-family:var(--en);letter-spacing:.03em;}
+  .sg-sp__bar{height:14px;background:var(--gold);border-radius:2px;}
+  /* boxes (radius / border-width / opacity / elevation) */
+  .sg-grid{display:flex;flex-wrap:wrap;gap:18px;}
+  .sg-box{width:88px;text-align:center;}
+  .sg-box__b{height:60px;background:var(--bg-subtler);border:1px solid var(--border-bold);}
+  .sg-box span{display:block;font-size:11px;color:var(--text-subtle);margin-top:7px;font-family:var(--en);letter-spacing:.03em;}
+  .sg-box small{display:block;font-size:10px;color:var(--text-subtle);}
+  .sg-op__b{height:60px;background:var(--gold);}
+  .sg-el__b{height:60px;background:var(--c-surface);border-radius:8px;}
+  /* component demo */
+  .sg-demo{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .sg-card{background:var(--c-surface);border:1px solid var(--border-subtle);border-radius:8px;box-shadow:var(--shadow);padding:18px 20px;max-width:280px;}
+  .sg-card h4{font-size:16px;font-weight:500;margin-bottom:4px;}
+  .sg-card p{font-size:12.5px;color:var(--text-subtle);line-height:1.8;}
+  .sg-note{font-size:11.5px;color:var(--text-subtle);margin-top:10px;line-height:1.7;}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <a class="hd__logo" href="index.html">Everglow.</a>
+  <nav class="hd__nav">
+    <a href="our-salon.html">Our Salon</a>
+    <a href="menu.html">Menu</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="blog.html">Blog</a>
+    <a href="access.html">Access</a>
+  </nav>
+  <a class="btn btn--gold hd__cta" href="contact.html" style="height:42px;padding:0 22px;">予約する</a>
+  <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</header>
+
+<div class="panel" id="panel">
+  <button class="burger panel__close" id="panelClose" aria-label="閉じる"><span></span><span></span><span></span></button>
+  <a href="index.html">Home<small>ホーム</small></a>
+  <a href="our-salon.html">Our Salon<small>サロンについて</small></a>
+  <a href="menu.html">Menu<small>メニュー</small></a>
+  <a href="gallery.html">Gallery<small>ギャラリー</small></a>
+  <a href="blog.html">Blog<small>お知らせ</small></a>
+  <a href="access.html">Access<small>アクセス</small></a>
+  <a href="contact.html">Contact<small>ご予約・お問い合わせ</small></a>
+  <div class="panel__sns">
+    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 22v-8h2.7l.4-3.4h-3.1V8.4c0-1 .27-1.65 1.7-1.65h1.5V3.7c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.23H7.8V14h2.4v8h3z"/></svg></a>
+    <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h2.7l-5.9 6.75L21.6 21h-5.43l-4.25-5.56L6.86 21H4.15l6.3-7.2L3.6 3h5.57l3.84 5.08L17.5 3z"/></svg></a>
+  </div>
+</div>
+
+<section class="subhero"><span class="ghost" aria-hidden="true">System</span><span class="en">Style Guide</span><span class="jp">デザインシステム</span></section>
+
+<main class="sg"><div class="wrap">
+  <p class="sg__lead">Figma の <b>バリアブル（デザイントークン）</b>を <b>1:1</b> でコードに実装したスタイルガイドです。色は <b>primitive → semantic → component</b> の3層構成。<br>左下のトグルで <b>ライト / ダーク</b> を切り替えると、セマンティックトークンが Figma の各モード値に追従して切り替わります。</p>
+
+  <!-- ============ PRIMITIVE COLOR ============ -->
+  <section class="sg__sec">
+    <h2 class="sg__h">Primitive Colors</h2>
+    <p class="sg__desc">最下層の素の色ランプ（5系統 × 5〜100）。これ自体はモードで変化しません。</p>
+
+    <div class="sg__sub">Warm（ベースニュートラル）</div>
+    <div class="sg-ramp">
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-100)"></div><div class="sg-sw__t"><b>warm/100</b><span>#fcfcf5</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-90)"></div><div class="sg-sw__t"><b>warm/90</b><span>#f7f6ef</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-80)"></div><div class="sg-sw__t"><b>warm/80</b><span>#f0efe8</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-70)"></div><div class="sg-sw__t"><b>warm/70</b><span>#e9e7e1</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-60)"></div><div class="sg-sw__t"><b>warm/60</b><span>#dcd9d2</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-50)"></div><div class="sg-sw__t"><b>warm/50</b><span>#cfcbc4</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-40)"></div><div class="sg-sw__t"><b>warm/40</b><span>#bebab3</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-30)"></div><div class="sg-sw__t"><b>warm/30</b><span>#a49f98</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-20)"></div><div class="sg-sw__t"><b>warm/20</b><span>#4e4a46</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-10)"></div><div class="sg-sw__t"><b>warm/10</b><span>#2a2826</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--warm-5)"></div><div class="sg-sw__t"><b>warm/5</b><span>#121110</span></div></div>
+    </div>
+
+    <div class="sg__sub">Neutral</div>
+    <div class="sg-ramp">
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-100)"></div><div class="sg-sw__t"><b>neutral/100</b><span>#ffffff</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-90)"></div><div class="sg-sw__t"><b>neutral/90</b><span>#fbfbfb</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-80)"></div><div class="sg-sw__t"><b>neutral/80</b><span>#f4f4f4</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-70)"></div><div class="sg-sw__t"><b>neutral/70</b><span>#e0e0e0</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-60)"></div><div class="sg-sw__t"><b>neutral/60</b><span>#c2c2c2</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-50)"></div><div class="sg-sw__t"><b>neutral/50</b><span>#9e9e9e</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-40)"></div><div class="sg-sw__t"><b>neutral/40</b><span>#757575</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-30)"></div><div class="sg-sw__t"><b>neutral/30</b><span>#5c5c5c</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-20)"></div><div class="sg-sw__t"><b>neutral/20</b><span>#474747</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-10)"></div><div class="sg-sw__t"><b>neutral/10</b><span>#333333</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--neutral-5)"></div><div class="sg-sw__t"><b>neutral/5</b><span>#1f1f1f</span></div></div>
+    </div>
+
+    <div class="sg__sub">Gold（Primary）</div>
+    <div class="sg-ramp">
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-90)"></div><div class="sg-sw__t"><b>gold/90</b><span>#ede5d8</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-80)"></div><div class="sg-sw__t"><b>gold/80</b><span>#e2d8c5</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-70)"></div><div class="sg-sw__t"><b>gold/70</b><span>#d8cab3</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-60)"></div><div class="sg-sw__t"><b>gold/60</b><span>#cdbda0</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-50)"></div><div class="sg-sw__t"><b>gold/50</b><span>#b7a17a</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-40)"></div><div class="sg-sw__t"><b>gold/40</b><span>#a28655</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-30)"></div><div class="sg-sw__t"><b>gold/30</b><span>#8c6b2f</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-20)"></div><div class="sg-sw__t"><b>gold/20</b><span>#705626</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-10)"></div><div class="sg-sw__t"><b>gold/10</b><span>#54401c</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--gold-5)"></div><div class="sg-sw__t"><b>gold/5</b><span>#382b13</span></div></div>
+    </div>
+
+    <div class="sg__sub">Danger / Success</div>
+    <div class="sg-ramp">
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--danger-60)"></div><div class="sg-sw__t"><b>danger/60</b><span>#ff999f</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--danger-40)"></div><div class="sg-sw__t"><b>danger/40</b><span>#ff4d58</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--danger-30)"></div><div class="sg-sw__t"><b>danger/30</b><span>#eb1d35</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--danger-20)"></div><div class="sg-sw__t"><b>danger/20</b><span>#c20b2a</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--success-60)"></div><div class="sg-sw__t"><b>success/60</b><span>#a9d9a1</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--success-40)"></div><div class="sg-sw__t"><b>success/40</b><span>#55b545</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--success-30)"></div><div class="sg-sw__t"><b>success/30</b><span>#2aa315</span></div></div>
+      <div class="sg-sw"><div class="sg-sw__c" style="background:var(--success-20)"></div><div class="sg-sw__t"><b>success/20</b><span>#218011</span></div></div>
+    </div>
+  </section>
+
+  <!-- ============ SEMANTIC COLOR ============ -->
+  <section class="sg__sec">
+    <h2 class="sg__h">Semantic Colors</h2>
+    <p class="sg__desc">用途ベースのトークン。プリミティブを参照し、<b>ライト / ダークで参照先が切り替わります</b>（トグルで確認できます）。</p>
+
+    <div class="sg__sub">Background</div>
+    <div class="sg-toks">
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-bg)"></div><div class="sg-tok__n">bg / default<small>warm 100 → 5</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-bg-subtle)"></div><div class="sg-tok__n">bg / subtle<small>warm 90 → 10</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-bg-subtler)"></div><div class="sg-tok__n">bg / subtler<small>warm 80 → 20</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-bg-primary)"></div><div class="sg-tok__n">bg / primary-action<small>gold 30 → 20</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-surface)"></div><div class="sg-tok__n">surface（カード面）<small>neutral 100 → warm 10</small></div></div>
+    </div>
+
+    <div class="sg__sub">Text</div>
+    <div class="sg-toks">
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-text-default)"></div><div class="sg-tok__n">text / default<small>neutral 10 → 90</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-text-subtle)"></div><div class="sg-tok__n">text / subtle<small>neutral 30 → 70</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-text-danger)"></div><div class="sg-tok__n">text / danger<small>danger 20 → 70</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-text-success)"></div><div class="sg-tok__n">text / success<small>success 20 → 70</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-link-hover)"></div><div class="sg-tok__n">link / hovered<small>gold 30 → 50</small></div></div>
+    </div>
+
+    <div class="sg__sub">Border</div>
+    <div class="sg-toks">
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-border)"></div><div class="sg-tok__n">border / default<small>warm 50 → 40</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-border-subtle)"></div><div class="sg-tok__n">border / subtle<small>warm 60 → 30</small></div></div>
+      <div class="sg-tok"><div class="sg-tok__c" style="background:var(--c-border-bold)"></div><div class="sg-tok__n">border / bold<small>warm 20 → 80</small></div></div>
+    </div>
+  </section>
+
+  <!-- ============ TYPOGRAPHY ============ -->
+  <section class="sg__sec">
+    <h2 class="sg__h">Typography</h2>
+    <p class="sg__desc">Figma の複合トークン（title / heading / body / label）。和文 Noto Sans JP、欧文 Cormorant Garamond。</p>
+    <div class="sg-type"><div class="t-title-lg">親子で並んで、やさしい時間</div><small>title / lg — 48px · medium</small></div>
+    <div class="sg-type"><div class="t-title-md">親子で並んで、やさしい時間</div><small>title / md — 40px · medium</small></div>
+    <div class="sg-type"><div class="t-heading-xl">いつまでも、あなたらしく</div><small>heading / xl — 34px · medium</small></div>
+    <div class="sg-type"><div class="t-heading-lg">いつまでも、あなたらしく</div><small>heading / lg — 28px · medium</small></div>
+    <div class="sg-type"><div class="t-heading-md">いつまでも、あなたらしく</div><small>heading / md — 24px · medium</small></div>
+    <div class="sg-type"><div class="t-heading-sm">いつまでも、あなたらしく</div><small>heading / sm — 20px · medium</small></div>
+    <div class="sg-type"><div class="t-body-lg">完全予約制・マンツーマンだから、まわりを気にせずゆったり過ごせます。</div><small>body / lg — 20px</small></div>
+    <div class="sg-type"><div class="t-body-md">完全予約制・マンツーマンだから、まわりを気にせずゆったり過ごせます。</div><small>body / md — 16px</small></div>
+    <div class="sg-type"><div class="t-body-sm">完全予約制・マンツーマンだから、まわりを気にせずゆったり過ごせます。</div><small>body / sm — 14px</small></div>
+    <div class="sg-type"><div class="t-en" style="font-size:var(--fs-3xl)">Everglow Salon</div><small>en（Cormorant Garamond）· semibold</small></div>
+  </section>
+
+  <!-- ============ SPACING ============ -->
+  <section class="sg__sec">
+    <h2 class="sg__h">Spacing</h2>
+    <p class="sg__desc">4px グリッドベースのスペーシングスケール。</p>
+    <div class="sg-sp"><span class="sg-sp__n">3xs · 2px</span><span class="sg-sp__bar" style="width:var(--sp-3xs)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">2xs · 4px</span><span class="sg-sp__bar" style="width:var(--sp-2xs)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">xs · 8px</span><span class="sg-sp__bar" style="width:var(--sp-xs)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">sm · 12px</span><span class="sg-sp__bar" style="width:var(--sp-sm)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">md · 16px</span><span class="sg-sp__bar" style="width:var(--sp-md)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">lg · 24px</span><span class="sg-sp__bar" style="width:var(--sp-lg)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">xl · 32px</span><span class="sg-sp__bar" style="width:var(--sp-xl)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">2xl · 64px</span><span class="sg-sp__bar" style="width:var(--sp-2xl)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">3xl · 80px</span><span class="sg-sp__bar" style="width:var(--sp-3xl)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">4xl · 96px</span><span class="sg-sp__bar" style="width:var(--sp-4xl)"></span></div>
+    <div class="sg-sp"><span class="sg-sp__n">5xl · 128px</span><span class="sg-sp__bar" style="width:var(--sp-5xl)"></span></div>
+  </section>
+
+  <!-- ============ RADIUS / BORDER / OPACITY / ELEVATION ============ -->
+  <section class="sg__sec">
+    <h2 class="sg__h">Radius · Border · Opacity · Elevation</h2>
+
+    <div class="sg__sub">Border Radius</div>
+    <div class="sg-grid">
+      <div class="sg-box"><div class="sg-box__b" style="border-radius:var(--r-xs)"></div><span>xs<small>2px</small></span></div>
+      <div class="sg-box"><div class="sg-box__b" style="border-radius:var(--r-sm)"></div><span>sm<small>4px</small></span></div>
+      <div class="sg-box"><div class="sg-box__b" style="border-radius:var(--r-md)"></div><span>md<small>8px</small></span></div>
+      <div class="sg-box"><div class="sg-box__b" style="border-radius:var(--r-lg)"></div><span>lg<small>12px</small></span></div>
+      <div class="sg-box"><div class="sg-box__b" style="border-radius:var(--r-xl)"></div><span>xl<small>16px</small></span></div>
+      <div class="sg-box"><div class="sg-box__b" style="border-radius:var(--r-pill)"></div><span>pill<small>999</small></span></div>
+    </div>
+
+    <div class="sg__sub">Border Width</div>
+    <div class="sg-grid">
+      <div class="sg-box"><div class="sg-box__b" style="border:var(--bw-sm) solid var(--border-bold)"></div><span>sm<small>0.5px</small></span></div>
+      <div class="sg-box"><div class="sg-box__b" style="border:var(--bw-md) solid var(--border-bold)"></div><span>md<small>1px</small></span></div>
+      <div class="sg-box"><div class="sg-box__b" style="border:var(--bw-lg) solid var(--border-bold)"></div><span>lg<small>2px</small></span></div>
+    </div>
+
+    <div class="sg__sub">Opacity</div>
+    <div class="sg-grid">
+      <div class="sg-box"><div class="sg-box__b sg-op__b" style="opacity:var(--op-100)"></div><span>100</span></div>
+      <div class="sg-box"><div class="sg-box__b sg-op__b" style="opacity:var(--op-80)"></div><span>80</span></div>
+      <div class="sg-box"><div class="sg-box__b sg-op__b" style="opacity:var(--op-50)"></div><span>50</span></div>
+      <div class="sg-box"><div class="sg-box__b sg-op__b" style="opacity:var(--op-20)"></div><span>20</span></div>
+    </div>
+
+    <div class="sg__sub">Elevation</div>
+    <div class="sg-grid">
+      <div class="sg-box"><div class="sg-el__b" style="box-shadow:var(--shadow)"></div><span>shadow</span></div>
+    </div>
+  </section>
+
+  <!-- ============ COMPONENTS ============ -->
+  <section class="sg__sec">
+    <h2 class="sg__h">Components</h2>
+    <p class="sg__desc">トークンで構成された実コンポーネント。</p>
+
+    <div class="sg__sub">Buttons</div>
+    <div class="sg-demo">
+      <a class="btn btn--gold" href="#">予約する →</a>
+      <a class="btn btn--ghost" href="#">詳しく見る →</a>
+    </div>
+    <div style="max-width:320px;margin-top:14px;"><a class="btn btn--gold btn--block" href="#">ご予約・お問い合わせ →</a></div>
+
+    <div class="sg__sub">Chips</div>
+    <div class="chips" style="margin-bottom:0;"><a class="on" href="#">すべて</a><a href="#">お知らせ</a><a href="#">スタイル</a><a href="#">カラー</a></div>
+
+    <div class="sg__sub">Card</div>
+    <div class="sg-card">
+      <h4>少人数制の落ち着き</h4>
+      <p>夫婦ふたりで営む少人数制のサロンならではの、落ち着いた空間でゆったりとしたひとときを。</p>
+    </div>
+
+    <div class="sg__sub">Form field</div>
+    <form class="form" style="max-width:360px;" onsubmit="return false;">
+      <div class="field"><label>お名前<span class="req">必須</span></label><input type="text" placeholder="山田 花子"></div>
+      <div class="field"><label>お問い合わせ内容</label><textarea placeholder="ご相談・ご質問など" style="min-height:90px;"></textarea></div>
+    </form>
+
+    <div class="sg__sub">News list</div>
+    <ul class="news__list" style="margin-bottom:0;">
+      <li><a href="#"><span class="news__meta"><span class="news__cat">お知らせ</span><span class="news__date">2026.06.27</span></span><span class="news__ttl">夏季の営業時間とご予約について</span></a></li>
+    </ul>
+
+    <p class="sg-note">※ このページは Figma「Everglow」デザインシステムのバリアブルを 1:1 で実装した内部用スタイルガイドです。すべての色は左下のトグルでライト/ダークに追従します。</p>
+  </section>
+
+</div></main>
+
+<footer class="ft">
+  <div class="wrap">
+    <h3 class="ft__h">Salon</h3>
+    <div class="ft__salon">
+      <a class="ul" href="access.html">神奈川県藤沢市〇〇 0-0-0</a><br>
+      平日 10:00–19:00 ／ 土日祝 9:00–18:00<br>
+      定休日 毎週月曜日<br>
+      <a class="ul" href="tel:0466000000">0466-xx-xxxx</a>
+    </div>
+    <hr class="ft__hr">
+    <h3 class="ft__h">Pages</h3>
+    <nav class="ft__pages">
+      <a href="index.html">Home</a>
+      <a href="our-salon.html">Our Salon</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="access.html">Access</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <hr class="ft__hr">
+    <div class="ft__brand"><div class="ft__logo">Everglow</div><div class="ft__copy">© 2026 Everglow</div></div>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="contact.html" aria-label="ご予約はこちら">
+  <span class="fab__ripple"></span><span class="fab__ripple"></span><span class="fab__ripple"></span>
+  <span class="fab__core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg><span class="fab__txt">予約</span></span>
+</a>
+
+<script src="app.js" defer></script>
+</body>
+</html>

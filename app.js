@@ -9,3 +9,32 @@ const burger=document.getElementById('burger'),panel=document.getElementById('pa
   const fab=document.getElementById('fab');
   const fabScroll=()=>fab.classList.toggle('show',scrollY>420);
   addEventListener('scroll',fabScroll,{passive:true});fabScroll();
+  // テーマ切替（light/dark）：<html data-theme> を切替え localStorage に保存。Figma DS の dark モードに対応。
+  (function(){
+    const root=document.documentElement;
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'||saved==='dark')root.setAttribute('data-theme',saved);
+    const moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+    const sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>';
+    const isDark=()=>{const t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches;};
+    const btn=document.createElement('button');
+    btn.className='theme-toggle';
+    const render=()=>{btn.innerHTML=isDark()?sun:moon;btn.setAttribute('aria-label',isDark()?'ライトモードに切替':'ダークモードに切替');};
+    render();
+    btn.addEventListener('click',()=>{const next=isDark()?'light':'dark';root.setAttribute('data-theme',next);localStorage.setItem('theme',next);render();});
+    document.body.appendChild(btn);
+  })();
+  // ブログ一覧：カテゴリチップで記事を絞り込み
+  const chips=document.querySelector('.chips');
+  if(chips){
+    const cards=[...document.querySelectorAll('.bcard')];
+    const empty=document.querySelector('.bempty');
+    chips.addEventListener('click',e=>{
+      const a=e.target.closest('a');if(!a)return;e.preventDefault();
+      chips.querySelectorAll('a').forEach(x=>x.classList.toggle('on',x===a));
+      const cat=a.dataset.cat;
+      let shown=0;
+      cards.forEach(c=>{const hit=!cat||c.dataset.cat===cat;c.hidden=!hit;if(hit)shown++;});
+      if(empty)empty.hidden=shown>0;
+    });
+  }
