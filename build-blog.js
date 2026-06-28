@@ -128,19 +128,47 @@ const resv = () => `<section class="resv">
   <a class="btn" href="contact.html">予約する →</a>
 </section>`;
 
-const docHead = (title, desc) => `<!doctype html>
+// 公開ドメイン（確定後に置換）。OGP/canonical の絶対URLに使用。
+const DOMAIN = process.env.SITE_URL || 'https://everglow.netlify.app';
+const OGIMG = `${DOMAIN}/images/ogp.jpg`;
+const escAttr = (s) => esc(s).replace(/"/g, '&quot;');
+const headMeta = (fullTitle, desc, pathRel, ogType) => {
+  const url = `${DOMAIN}/${pathRel}`;
+  const t = escAttr(fullTitle);
+  const d = escAttr(desc);
+  return `<link rel="canonical" href="${url}">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#fcfcf5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="${ogType}">
+<meta property="og:site_name" content="Everglow">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="${t}">
+<meta property="og:description" content="${d}">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${OGIMG}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${t}">
+<meta name="twitter:description" content="${d}">
+<meta name="twitter:image" content="${OGIMG}">`;
+};
+const docHead = (title, desc, pathRel, opts = {}) => {
+  const fullTitle = `${title} ｜ Everglow`;
+  return `<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${title} ｜ Everglow</title>
-<meta name="description" content="${desc}">
+<title>${esc(fullTitle)}</title>
+<meta name="description" content="${escAttr(desc)}">
+${headMeta(fullTitle, desc, pathRel, opts.ogType || 'website')}${opts.jsonld ? `\n${opts.jsonld}` : ''}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>`;
+};
 const docFoot = `<script src="app.js" defer></script>
 </body>
 </html>`;
@@ -162,7 +190,7 @@ function buildIndex(posts) {
   const chips = `<div class="chips" data-rev><a class="on" href="#" data-cat="">すべて</a>${cats
     .map((c) => `<a href="#" data-cat="${esc(c)}">${esc(c)}</a>`)
     .join('')}</div>`;
-  const html = `${docHead('Blog', 'Everglow からのお知らせ・ブログ。')}
+  const html = `${docHead('Blog', 'Everglow からのお知らせ・ブログ。', 'blog.html')}
 ${header()}
 <section class="subhero"><span class="ghost" aria-hidden="true">Blog</span><span class="en">Blog</span><span class="jp">お知らせ・ブログ</span></section>
 <main class="page"><div class="wrap">
@@ -187,7 +215,20 @@ function buildArticle(p, posts, i) {
     <a class="art__navc" href="blog.html">一覧へ</a>
     ${prev ? `<a href="blog-${prev.slug}.html">次の記事 →</a>` : '<span></span>'}
   </div>`;
-  const html = `${docHead(p.title, p.excerpt)}
+  // 記事の構造化データ（BlogPosting）
+  const articleLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: p.title,
+    datePublished: p.date.replace(/\./g, '-'),
+    articleSection: p.category,
+    url: `${DOMAIN}/blog-${p.slug}.html`,
+    mainEntityOfPage: `${DOMAIN}/blog-${p.slug}.html`,
+    publisher: { '@type': 'Organization', name: 'Everglow' },
+    ...(p.cover ? { image: p.cover } : {}),
+  };
+  const jsonld = `<script type="application/ld+json">\n${JSON.stringify(articleLd, null, 2)}\n</script>`;
+  const html = `${docHead(p.title, p.excerpt, `blog-${p.slug}.html`, { ogType: 'article', jsonld })}
 ${header()}
 <main class="page"><div class="wrap">
   <article class="art">
