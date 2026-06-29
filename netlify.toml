@@ -11,7 +11,8 @@
   publish = "."
 
 [build.environment]
-  NODE_VERSION = "20"
+  # Node 22+：supabase-js が必要とするネイティブWebSocketを利用するため
+  NODE_VERSION = "22"
 
 # 予約API（サーバーレス関数）。Supabase接続は環境変数で設定:
 #   SUPABASE_URL / SUPABASE_SECRET_KEY

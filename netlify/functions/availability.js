@@ -17,6 +17,6 @@ exports.handler = async (event) => {
     return json(200, { slots: buildSlots(date, m.min, taken) });
   } catch (e) {
     console.error('availability error', e);
-    return json(500, { message: 'server error', detail: String((e && e.message) || e) });
+    return json(500, { message: 'server error' });
   }
 };
