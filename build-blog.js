@@ -87,7 +87,7 @@ const SNS = `<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="n
 const header = () => `<header class="hd">
   <a class="hd__logo" href="index.html">Everglow.</a>
   <nav class="hd__nav">${HEADNAV.map((h) => `<a href="${h}">${NAV.find((n) => n[0] === h)[1]}</a>`).join('')}</nav>
-  <a class="btn btn--gold hd__cta" href="contact.html" style="height:42px;padding:0 22px;">予約する</a>
+  <a class="btn btn--gold hd__cta" href="reserve.html" style="height:42px;padding:0 22px;">予約する</a>
   <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
 </header>
 <div class="panel" id="panel">
@@ -117,7 +117,7 @@ const footer = (cur) => `<footer class="ft">
     <div class="ft__brand"><div class="ft__logo">Everglow.</div><div class="ft__copy">© 2026 Everglow</div></div>
   </div>
 </footer>
-<a class="fab" id="fab" href="contact.html" aria-label="ご予約はこちら">
+<a class="fab" id="fab" href="reserve.html" aria-label="ご予約はこちら">
   <span class="fab__ripple"></span><span class="fab__ripple"></span><span class="fab__ripple"></span>
   <span class="fab__core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg><span class="fab__txt">予約</span></span>
 </a>`;
@@ -125,7 +125,7 @@ const footer = (cur) => `<footer class="ft">
 const resv = () => `<section class="resv">
   <div class="en">Reservation</div>
   <div class="jp">ご予約・お問い合わせ</div>
-  <a class="btn" href="contact.html">予約する →</a>
+  <a class="btn" href="reserve.html">予約する →</a>
 </section>`;
 
 // 公開ドメイン（確定後に置換）。OGP/canonical の絶対URLに使用。
@@ -159,6 +159,7 @@ const docHead = (title, desc, pathRel, opts = {}) => {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(d){d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t)}catch(e){}})(document.documentElement)</script>
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${escAttr(desc)}">
 ${headMeta(fullTitle, desc, pathRel, opts.ogType || 'website')}${opts.jsonld ? `\n${opts.jsonld}` : ''}

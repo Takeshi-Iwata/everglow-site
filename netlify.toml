@@ -12,3 +12,10 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# 予約API（サーバーレス関数）。Supabase接続は環境変数で設定:
+#   SUPABASE_URL / SUPABASE_SECRET_KEY
+#   （任意で RESEND_API_KEY / RESERVATION_FROM / SALON_EMAIL ＝確認メール用）
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
