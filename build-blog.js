@@ -167,7 +167,8 @@ ${headMeta(fullTitle, desc, pathRel, opts.ogType || 'website')}${opts.jsonld ? `
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>`;
+<body>
+<a class="skip" href="#main">本文へスキップ</a>`;
 };
 const docFoot = `<script src="app.js" defer></script>
 </body>
@@ -193,7 +194,7 @@ function buildIndex(posts) {
   const html = `${docHead('Blog', 'Everglow からのお知らせ・ブログ。', 'blog.html')}
 ${header()}
 <section class="subhero"><span class="ghost" aria-hidden="true">Blog</span><span class="en">Blog</span><span class="jp">お知らせ・ブログ</span></section>
-<main class="page"><div class="wrap">
+<main class="page" id="main" tabindex="-1"><div class="wrap">
   ${chips}
   <div class="blist" data-rev>
 ${cards}
@@ -230,7 +231,7 @@ function buildArticle(p, posts, i) {
   const jsonld = `<script type="application/ld+json">\n${JSON.stringify(articleLd, null, 2)}\n</script>`;
   const html = `${docHead(p.title, p.excerpt, `blog-${p.slug}.html`, { ogType: 'article', jsonld })}
 ${header()}
-<main class="page"><div class="wrap">
+<main class="page" id="main" tabindex="-1"><div class="wrap">
   <article class="art">
     <header class="art__head" data-rev>
       <div class="art__meta"><span class="art__cat">${esc(p.category)}</span><span class="art__date">${esc(p.date)}</span></div>
