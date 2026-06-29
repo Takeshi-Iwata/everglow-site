@@ -129,7 +129,7 @@ const resv = () => `<section class="resv">
 </section>`;
 
 // 公開ドメイン（確定後に置換）。OGP/canonical の絶対URLに使用。
-const DOMAIN = process.env.SITE_URL || 'https://everglow.netlify.app';
+const DOMAIN = process.env.SITE_URL || 'https://everglow-salon.netlify.app';
 const OGIMG = `${DOMAIN}/images/ogp.jpg`;
 const escAttr = (s) => esc(s).replace(/"/g, '&quot;');
 const headMeta = (fullTitle, desc, pathRel, ogType) => {
