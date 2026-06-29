@@ -8,10 +8,16 @@ const SLOT_MIN = 30; // 予約枠の刻み（分）
 // メニュー（料金・所要時間の正本）。client(booking.js)の表示用コピーと一致させること。
 const MENUS = [
   { id: 'cut', name: 'カット', price: 5000, min: 60 },
-  { id: 'color', name: 'オーガニックカラー', price: 8000, min: 120 },
-  { id: 'treatment', name: 'プレミアムトリートメント', price: 5500, min: 60 },
-  { id: 'cut_color', name: 'カット＋オーガニックカラー', price: 12000, min: 150 },
-  { id: 'cut_treatment', name: 'カット＋トリートメント', price: 9500, min: 90 },
+  { id: 'bangs', name: '前髪カット', price: 1500, min: 15 },
+  { id: 'kids', name: 'キッズカット', price: 3000, min: 30 },
+  { id: 'color', name: 'オーガニックカラー', price: 8000, min: 90 },
+  { id: 'retouch', name: 'リタッチカラー', price: 6500, min: 60 },
+  { id: 'highlight', name: 'ハイライト', price: 12000, min: 120 },
+  { id: 'digital_perm', name: 'デジタルパーマ', price: 11000, min: 120 },
+  { id: 'water_perm', name: '水パーマ', price: 9000, min: 100 },
+  { id: 'treatment', name: 'プレミアムトリートメント', price: 5500, min: 45 },
+  { id: 'kaizen', name: '髪質改善トリートメント', price: 9000, min: 90 },
+  { id: 'spa', name: 'ヘッドスパ', price: 4000, min: 30 },
 ];
 
 // 営業時間（0=日 … 6=土）。月曜(1)は定休＝未定義。

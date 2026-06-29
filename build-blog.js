@@ -124,7 +124,7 @@ const footer = (cur) => `<footer class="ft">
 
 const resv = () => `<section class="resv">
   <div class="en">Reservation</div>
-  <div class="jp">ご予約・お問い合わせ</div>
+  <div class="jp">ご予約</div>
   <a class="btn" href="reserve.html">予約する →</a>
 </section>`;
 

@@ -322,7 +322,7 @@
 .mcat__h{display:flex;align-items:baseline;gap:var(--sp-sm);border-bottom:1px solid var(--border-bold);padding-bottom:var(--sp-sm);margin-bottom:var(--sp-2xs);}
 .mcat__en{font-family:var(--en);font-weight:600;font-size:var(--fs-xl);letter-spacing:.06em;color:var(--gold);}
 .mcat__jp{font-size:var(--fs-sm);color:var(--text-subtle);letter-spacing:.08em;}
-.mlist{list-style:none;}
+.mlist{list-style:none;margin:0;}
 .mlist li{display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-md);padding:var(--sp-md) var(--sp-3xs);border-bottom:1px solid var(--border-subtle);}
 .mlist .name{font-size:var(--fs-md);font-weight:500;}
 .mlist .name small{display:block;font-size:var(--fs-xs);color:var(--text-subtle);font-weight:400;margin-top:var(--sp-2xs);line-height:1.6;}
@@ -348,11 +348,11 @@
 .mcat__t .en{font-family:var(--en);font-weight:600;font-size:var(--fs-xl);letter-spacing:.06em;}
 .mcat__t .jp{font-size:var(--fs-xs);color:var(--text-subtle);letter-spacing:.12em;}
 .mitem{padding:var(--sp-md) var(--sp-3xs);border-bottom:1px dotted var(--border);}
-.mitem__top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;}
+.mitem__top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-top:var(--sp-md);}
 .mitem__name{font-size:var(--fs-md);font-weight:500;}
 .mitem__price{font-size:var(--fs-md);font-weight:500;white-space:nowrap;}
 .mitem__price .min{font-size:var(--fs-xs);color:var(--text-subtle);font-weight:400;margin-left:var(--sp-3xs);}
-.mitem__desc{font-size:var(--fs-sm);color:var(--text-subtle);line-height:1.85;margin-top:var(--sp-xs);}
+.mitem__desc{margin:0;padding:var(--sp-2xs) 0 var(--sp-md);border-bottom:1px dotted var(--border);font-size:var(--fs-sm);color:var(--text-subtle);line-height:1.85;}
 .mfeat{background:var(--bg-subtle);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:20px;margin:var(--sp-md) 0 var(--sp-3xs);}
 .mfeat__tag{display:inline-block;font-size:var(--fs-xs);letter-spacing:.1em;color:#fff;background:var(--gold);padding:var(--sp-2xs) var(--sp-sm);border-radius:var(--r-pill);margin-bottom:var(--sp-sm);}
 .mfeat__name{font-size:var(--fs-md);font-weight:600;margin-bottom:var(--sp-xs);}
