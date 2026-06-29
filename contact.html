@@ -51,14 +51,15 @@
 </div>
 <section class="subhero"><span class="ghost" aria-hidden="true">Contact</span><h1><span class="en">Contact</span><span class="jp">お問い合わせ</span></h1></section>
 <main class="page" id="main" tabindex="-1"><div class="wrap">
+  <h2 class="vh">お問い合わせフォーム</h2>
   <p class="lede" data-rev>メニューやサービスへのご質問・ご相談を承ります。<br>2〜3営業日以内にご返信いたします。</p>
   <div class="center" data-rev style="margin-bottom:32px;"><a class="btn btn--gold" href="reserve.html">ご予約はネット予約から →</a></div>
   <form class="form" data-rev onsubmit="alert('デモのため送信は行われません。');return false;">
-    <div class="field"><label>お名前<span class="req">必須</span></label><input type="text" placeholder="山田 花子" required></div>
-    <div class="field"><label>メールアドレス<span class="req">必須</span></label><input type="email" placeholder="example@mail.com" required></div>
-    <div class="field"><label>電話番号</label><input type="tel" placeholder="090-0000-0000"></div>
-    <div class="field"><label>お問い合わせ種別</label><select><option>選択してください</option><option>メニュー・料金について</option><option>アクセス・営業時間について</option><option>ご予約の変更・キャンセル</option><option>その他</option></select></div>
-    <div class="field"><label>お問い合わせ内容<span class="req">必須</span></label><textarea placeholder="ご相談・ご質問などをご記入ください。" required></textarea></div>
+    <div class="field"><label for="cf-name">お名前<span class="req">必須</span></label><input id="cf-name" type="text" placeholder="山田 花子" required></div>
+    <div class="field"><label for="cf-email">メールアドレス<span class="req">必須</span></label><input id="cf-email" type="email" placeholder="example@mail.com" required></div>
+    <div class="field"><label for="cf-tel">電話番号</label><input id="cf-tel" type="tel" placeholder="090-0000-0000"></div>
+    <div class="field"><label for="cf-type">お問い合わせ種別</label><select id="cf-type"><option>選択してください</option><option>メニュー・料金について</option><option>アクセス・営業時間について</option><option>ご予約の変更・キャンセル</option><option>その他</option></select></div>
+    <div class="field"><label for="cf-msg">お問い合わせ内容<span class="req">必須</span></label><textarea id="cf-msg" placeholder="ご相談・ご質問などをご記入ください。" required></textarea></div>
     <button class="btn btn--gold btn--block" type="submit">送信する →</button>
     <p class="form__note">※ デモサイトのため送信は動作しません。<br>お電話：<a class="ul" href="tel:0466000000" style="color:var(--text);">0466-xx-xxxx</a>（お問い合わせ・ご予約）</p>
   </form>
@@ -89,7 +90,7 @@
 </footer>
 <a class="fab" id="fab" href="reserve.html" aria-label="ご予約はこちら">
   <span class="fab__ripple"></span><span class="fab__ripple"></span><span class="fab__ripple"></span>
-  <span class="fab__core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg><span class="fab__txt">予約</span></span>
+  <span class="fab__core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg><span class="fab__txt">ご予約</span></span>
 </a>
 <script src="app.js" defer></script>
 </body>

@@ -45,7 +45,8 @@ async function fetchFromMicroCMS() {
     if (Array.isArray(category)) category = category[0]; // セレクト型
     if (category && typeof category === 'object') category = category.name || category.value || ''; // 参照型
     const cover = (c.cover && c.cover.url) || (c.eyecatch && c.eyecatch.url) || '';
-    const excerpt = c.excerpt || body.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().slice(0, 70);
+    const plain = body.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    const excerpt = c.excerpt || (plain.length > 70 ? plain.slice(0, 70) + '…' : plain);
     return {
       slug: c.id,
       category: category || 'BLOG',
@@ -119,7 +120,7 @@ const footer = (cur) => `<footer class="ft">
 </footer>
 <a class="fab" id="fab" href="reserve.html" aria-label="ご予約はこちら">
   <span class="fab__ripple"></span><span class="fab__ripple"></span><span class="fab__ripple"></span>
-  <span class="fab__core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg><span class="fab__txt">予約</span></span>
+  <span class="fab__core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg><span class="fab__txt">ご予約</span></span>
 </a>`;
 
 const resv = () => `<section class="resv">
@@ -182,7 +183,7 @@ const ph = (cls, comment) => `<div class="ph ${cls}">${comment ? `<!-- ${comment
 function buildIndex(posts) {
   const cards = posts
     .map(
-      (p) => `    <a class="bcard" href="blog-${p.slug}.html" data-cat="${esc(p.category)}">${p.cover ? `<img class="bcard__img" src="${p.cover}" alt="">` : ph('bcard__img')}<div class="bcard__meta"><span class="bcard__cat">${esc(p.category)}</span><span class="bcard__date">${esc(p.date)}</span></div><h3 class="bcard__ttl">${esc(p.title)}</h3><p class="bcard__ex">${esc(p.excerpt)}</p></a>`
+      (p) => `    <a class="bcard" href="blog-${p.slug}.html" data-cat="${esc(p.category)}">${p.cover ? `<img class="bcard__img" src="${p.cover}" alt="">` : ph('bcard__img')}<div class="bcard__meta"><span class="bcard__cat">${esc(p.category)}</span><span class="bcard__date">${esc(p.date)}</span></div><h2 class="bcard__ttl">${esc(p.title)}</h2><p class="bcard__ex">${esc(p.excerpt)}</p></a>`
     )
     .join('\n');
   // チップは実在カテゴリから生成（好みの並び順を優先し、未知のものは後ろに付ける）

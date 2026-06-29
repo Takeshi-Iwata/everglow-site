@@ -86,10 +86,10 @@
       <h2 class="bk__h">お客様情報</h2>
       <div class="bk-sum" id="bkSummary"></div>
       <form class="form" id="bkForm">
-        <div class="field"><label>お名前<span class="req">必須</span></label><input type="text" name="name" placeholder="山田 花子" required></div>
-        <div class="field"><label>電話番号<span class="req">必須</span></label><input type="tel" name="tel" placeholder="090-0000-0000" required></div>
-        <div class="field"><label>メールアドレス<span class="req">必須</span></label><input type="email" name="email" placeholder="example@mail.com" required></div>
-        <div class="field"><label>ご要望（任意）</label><textarea name="note" placeholder="ご相談・ご希望など" style="min-height:90px;"></textarea></div>
+        <div class="field"><label for="bk-name">お名前<span class="req">必須</span></label><input id="bk-name" type="text" name="name" placeholder="山田 花子" required></div>
+        <div class="field"><label for="bk-tel">電話番号<span class="req">必須</span></label><input id="bk-tel" type="tel" name="tel" placeholder="090-0000-0000" required></div>
+        <div class="field"><label for="bk-email">メールアドレス<span class="req">必須</span></label><input id="bk-email" type="email" name="email" placeholder="example@mail.com" required></div>
+        <div class="field"><label for="bk-note">ご要望（任意）</label><textarea id="bk-note" name="note" placeholder="ご相談・ご希望など" style="min-height:90px;"></textarea></div>
         <div class="bk__nav">
           <button type="button" class="btn btn--ghost" data-back="time">← 時間へ戻る</button>
           <button type="submit" class="btn btn--gold btn--block">この内容で予約する →</button>

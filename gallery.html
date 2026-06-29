@@ -51,14 +51,29 @@
 </div>
 <section class="subhero"><span class="ghost" aria-hidden="true">Gallery</span><h1><span class="en">Gallery</span><span class="jp">スタイルギャラリー</span></h1></section>
 <main class="page" id="main" tabindex="-1"><div class="wrap">
-  <div class="ggrid" data-rev>
-    <div class="ph wide"></div>
-    <div class="ph tall"></div><div class="ph"></div><div class="ph"></div>
-    <div class="ph"></div><div class="ph tall"></div><div class="ph"></div>
-    <div class="ph wide"></div>
-    <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+  <h2 class="vh">スタイルギャラリー</h2>
+  <div class="chips gchips" data-rev>
+    <a class="on" href="#" data-cat="">すべて</a>
+    <a href="#" data-cat="cut">カット</a>
+    <a href="#" data-cat="color">カラー</a>
+    <a href="#" data-cat="perm">パーマ</a>
+    <a href="#" data-cat="arrange">アレンジ</a>
   </div>
-  <p class="mnote" data-rev>※ 写真は後日、実際のスタイル写真に差し替えます。</p>
+  <div class="ggrid" data-rev>
+    <button class="gitem ph wide" type="button" data-cat="cut" data-label="ナチュラルショート" aria-label="ナチュラルショート を拡大表示"></button>
+    <button class="gitem ph tall" type="button" data-cat="cut" data-label="大人ボブ" aria-label="大人ボブ を拡大表示"></button>
+    <button class="gitem ph" type="button" data-cat="color" data-label="透明感グレージュ" aria-label="透明感グレージュ を拡大表示"></button>
+    <button class="gitem ph" type="button" data-cat="perm" data-label="ふんわりパーマ" aria-label="ふんわりパーマ を拡大表示"></button>
+    <button class="gitem ph" type="button" data-cat="cut" data-label="レイヤーミディ" aria-label="レイヤーミディ を拡大表示"></button>
+    <button class="gitem ph tall" type="button" data-cat="color" data-label="ハイライトカラー" aria-label="ハイライトカラー を拡大表示"></button>
+    <button class="gitem ph" type="button" data-cat="arrange" data-label="結婚式アレンジ" aria-label="結婚式アレンジ を拡大表示"></button>
+    <button class="gitem ph wide" type="button" data-cat="cut" data-label="韓国風ヘア" aria-label="韓国風ヘア を拡大表示"></button>
+    <button class="gitem ph" type="button" data-cat="color" data-label="インナーカラー" aria-label="インナーカラー を拡大表示"></button>
+    <button class="gitem ph" type="button" data-cat="perm" data-label="デジタルパーマ" aria-label="デジタルパーマ を拡大表示"></button>
+    <button class="gitem ph" type="button" data-cat="arrange" data-label="浴衣アレンジ" aria-label="浴衣アレンジ を拡大表示"></button>
+    <button class="gitem ph" type="button" data-cat="cut" data-label="大人ロング" aria-label="大人ロング を拡大表示"></button>
+  </div>
+  <p class="mnote" data-rev>気になるスタイルをタップすると拡大してご覧いただけます。<br>※ 写真は後日、実際のスタイル写真に差し替えます。</p>
 </div></main>
 <section class="resv">
   <div class="en">Reservation</div>
@@ -90,8 +105,9 @@
 </footer>
 <a class="fab" id="fab" href="reserve.html" aria-label="ご予約はこちら">
   <span class="fab__ripple"></span><span class="fab__ripple"></span><span class="fab__ripple"></span>
-  <span class="fab__core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg><span class="fab__txt">予約</span></span>
+  <span class="fab__core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8 3v4M16 3v4"/></svg><span class="fab__txt">ご予約</span></span>
 </a>
 <script src="app.js" defer></script>
+<script src="gallery.js" defer></script>
 </body>
 </html>

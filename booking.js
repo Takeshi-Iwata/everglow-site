@@ -76,27 +76,42 @@
     );
   }
 
-  /* ---------- Step 2: 日付（今日から28日、定休日を除外） ---------- */
+  /* ---------- Step 2: 日付（月間カレンダー。定休日・過去日は選択不可） ---------- */
+  let view = null; // 表示中の月（その月の1日）
   function renderDates() {
-    const out = [];
     const today = new Date(); today.setHours(0, 0, 0, 0);
-    for (let i = 0; i < 28; i++) {
-      const d = new Date(today); d.setDate(today.getDate() + i);
-      if (!HOURS[d.getDay()]) continue; // 定休日
-      out.push(`<button type="button" class="bk-date" data-d="${ymd(d)}">
-        <span class="bk-date__wd">${WD[d.getDay()]}</span>
-        <span class="bk-date__day">${d.getDate()}</span>
-        <span class="bk-date__mo">${d.getMonth() + 1}月</span>
-      </button>`);
+    const minYM = new Date(today.getFullYear(), today.getMonth(), 1);
+    const maxYM = new Date(today.getFullYear(), today.getMonth() + 3, 1); // 3ヶ月先まで
+    if (!view) view = new Date(minYM);
+    const y = view.getFullYear(), m = view.getMonth();
+    const startW = new Date(y, m, 1).getDay(); // 0=日
+    const days = new Date(y, m + 1, 0).getDate();
+    const cells = [];
+    for (let i = 0; i < startW; i++) cells.push('<span class="bk-cal__cell"></span>');
+    for (let d = 1; d <= days; d++) {
+      const date = new Date(y, m, d), iso = ymd(date), wd = date.getDay();
+      const off = !HOURS[wd] || date < today; // 定休日 or 過去
+      const cls = ['bk-cal__day'];
+      if (off) cls.push('is-off');
+      if (wd === 0) cls.push('is-sun');
+      if (wd === 6) cls.push('is-sat');
+      if (+date === +today) cls.push('is-today');
+      cells.push(off
+        ? `<span class="${cls.join(' ')}">${d}</span>`
+        : `<button type="button" class="${cls.join(' ')}" data-d="${iso}" aria-label="${m + 1}月${d}日（${WD[wd]}）">${d}</button>`);
     }
-    els.dates.innerHTML = out.join('');
-    els.dates.querySelectorAll('.bk-date').forEach((b) =>
-      b.addEventListener('click', () => {
-        state.date = b.dataset.d; state.time = null;
-        renderTimes();
-        go('time');
-      })
-    );
+    els.dates.innerHTML = `
+      <div class="bk-cal__bar">
+        <button type="button" class="bk-cal__nav" data-mv="-1"${view > minYM ? '' : ' disabled'} aria-label="前の月">‹</button>
+        <span class="bk-cal__title">${y}年${m + 1}月</span>
+        <button type="button" class="bk-cal__nav" data-mv="1"${view < maxYM ? '' : ' disabled'} aria-label="次の月">›</button>
+      </div>
+      <div class="bk-cal__grid bk-cal__week"><span class="is-sun">日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="is-sat">土</span></div>
+      <div class="bk-cal__grid">${cells.join('')}</div>`;
+    els.dates.querySelectorAll('.bk-cal__day[data-d]').forEach((b) =>
+      b.addEventListener('click', () => { state.date = b.dataset.d; state.time = null; renderTimes(); go('time'); }));
+    els.dates.querySelectorAll('.bk-cal__nav[data-mv]').forEach((b) =>
+      b.addEventListener('click', () => { view = new Date(y, m + Number(b.dataset.mv), 1); renderDates(); }));
   }
 
   /* ---------- Step 3: 時間（空き枠） ---------- */

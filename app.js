@@ -7,8 +7,12 @@ const burger=document.getElementById('burger'),panel=document.getElementById('pa
   document.querySelectorAll('[data-rev]').forEach(el=>io.observe(el));
   document.querySelectorAll('.sec__title').forEach(t=>{const en=t.querySelector('.en');if(!en)return;const g=document.createElement('span');g.className='sec__ghost';g.textContent=en.textContent;g.setAttribute('aria-hidden','true');t.insertBefore(g,t.firstChild);});
   const fab=document.getElementById('fab');
-  const fabScroll=()=>fab.classList.toggle('show',scrollY>420);
-  addEventListener('scroll',fabScroll,{passive:true});fabScroll();
+  if(fab){
+    const fabScroll=()=>fab.classList.toggle('show',scrollY>420);
+    addEventListener('scroll',fabScroll,{passive:true});fabScroll();
+    const ft=document.querySelector('.ft'); // フッターに重なる間は引っ込める
+    if(ft)new IntersectionObserver(es=>fab.classList.toggle('at-footer',es[0].isIntersecting)).observe(ft);
+  }
   // テーマ切替（light/dark）：<html data-theme> を切替え localStorage に保存。Figma DS の dark モードに対応。
   (function(){
     const root=document.documentElement;
@@ -24,9 +28,9 @@ const burger=document.getElementById('burger'),panel=document.getElementById('pa
     btn.addEventListener('click',()=>{const next=isDark()?'light':'dark';root.setAttribute('data-theme',next);localStorage.setItem('theme',next);render();});
     document.body.appendChild(btn);
   })();
-  // ブログ一覧：カテゴリチップで記事を絞り込み
+  // ブログ一覧：カテゴリチップで記事を絞り込み（.bcardがある時だけ＝gallery等と競合させない）
   const chips=document.querySelector('.chips');
-  if(chips){
+  if(chips && document.querySelector('.bcard')){
     const cards=[...document.querySelectorAll('.bcard')];
     const empty=document.querySelector('.bempty');
     chips.addEventListener('click',e=>{
