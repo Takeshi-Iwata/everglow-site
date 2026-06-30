@@ -378,21 +378,21 @@
 
 /* ---- Gallery page ---- */
 .ggrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.ggrid .ph{border-radius:var(--r-md);aspect-ratio:1;}
-.ggrid .ph.wide{grid-column:1 / -1;aspect-ratio:2/1;}
-.ggrid .ph.tall{grid-row:span 2;aspect-ratio:172/360;}
-/* ギャラリー：クリックで拡大できるアイテム */
-.gitem{display:block;width:100%;padding:0;border:0;font:inherit;cursor:pointer;transition:opacity .2s,transform .12s;}
+/* ギャラリー：2列基本＋要所で全幅。写真は比率を保って全体表示 */
+.gitem{display:block;width:100%;padding:0;border:0;font:inherit;line-height:0;cursor:pointer;transition:opacity .2s,transform .12s;}
+.gitem.wide{grid-column:1 / -1;}
 .gitem:hover{opacity:.88;}
 .gitem:active{transform:scale(.99);}
 .gitem[hidden]{display:none;}
-.gitem img{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;}
+.gitem img{position:static;width:100%;height:auto;object-fit:initial;display:block;border-radius:var(--r-md);}
+.gitem.ph:has(img){border:0;background:none;}
 /* ライトボックス */
 .lb{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:var(--sp-xs);padding:var(--sp-md);background:rgba(18,17,16,.92);backdrop-filter:blur(4px);}
 .lb[hidden]{display:none;}
 .lb__stage{margin:0;display:flex;flex-direction:column;gap:var(--sp-sm);max-width:min(880px,90vw);}
-.lb__media{width:min(880px,84vw);max-height:78vh;aspect-ratio:4/3;border-radius:var(--r-md);overflow:hidden;}
-.lb__media img{width:100%;height:100%;object-fit:contain;display:block;}
+.lb__media{align-self:center;max-width:min(880px,90vw);line-height:0;border-radius:var(--r-md);overflow:hidden;}
+.lb__media.ph{width:min(880px,84vw);aspect-ratio:4/3;}
+.lb__media img{max-width:min(880px,90vw);max-height:80vh;width:auto;height:auto;display:block;}
 .lb__cap{text-align:center;color:var(--neutral-90);font-size:var(--fs-sm);letter-spacing:.04em;}
 .lb__close{position:absolute;top:var(--sp-md);right:var(--sp-md);}
 .lb__close,.lb__nav{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;transition:background .2s;}
@@ -508,6 +508,7 @@ button.bk-cal__day:hover{border-color:var(--gold);background:var(--bg-subtle);}
 
 @media(min-width:768px){
   .ggrid{grid-template-columns:1fr 1fr 1fr;}
+  .gitem.wide{grid-column:span 2;}
   .feat{flex-direction:row;}
   .feat__item{flex:1;}
 }
