@@ -6,6 +6,10 @@
         fill: #26221c;
       }
 
+      path:not([class]) {
+        fill: #26221c;
+      }
+
       .cls-2 {
         fill: none;
         stroke: #8c6b2f;
