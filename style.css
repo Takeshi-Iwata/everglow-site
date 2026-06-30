@@ -125,6 +125,7 @@
   .ph{background:linear-gradient(135deg,var(--bg-subtler),var(--bg-subtle));border:1px solid var(--border-subtle);position:relative;overflow:hidden;}
   .ph::after{content:"PHOTO";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:var(--fs-sm);letter-spacing:.3em;color:var(--border);}
   .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .ph:has(img)::after{display:none;} /* 実画像がある時は PHOTO ラベルを隠す */
 
   /* ---- Header ---- */
   .hd{position:sticky;top:0;z-index:50;height:72px;display:flex;align-items:center;gap:var(--sp-sm);padding:0 var(--sp-md);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-subtle);}
@@ -233,7 +234,7 @@
   .news__list a{display:flex;flex-direction:column;gap:var(--sp-2xs);padding:var(--sp-md) var(--sp-2xs);transition:.2s;}
   .news__list a:hover{background:var(--bg-subtle);}
   .news__meta{display:flex;align-items:center;gap:var(--sp-sm);font-size:var(--fs-xs);color:var(--text-subtle);}
-  .news__cat{font-family:var(--en);letter-spacing:.1em;color:var(--gold);}
+  .news__cat{font-family:var(--jp);letter-spacing:.1em;color:var(--gold);}
   .news__date{font-family:var(--en);letter-spacing:.05em;}
   .news__ttl{font-size:var(--fs-sm);line-height:1.6;}
 
@@ -408,7 +409,7 @@
 .bcard[hidden]{display:none;}
 .bcard__img{aspect-ratio:16/10;border-radius:var(--r-md);margin-bottom:14px;}
 .bcard__meta{display:flex;gap:var(--sp-sm);align-items:center;font-size:var(--fs-xs);color:var(--text-subtle);margin-bottom:var(--sp-xs);}
-.bcard__cat{font-family:var(--en);letter-spacing:.1em;color:var(--gold);}
+.bcard__cat{font-family:var(--jp);letter-spacing:.1em;color:var(--gold);}
 .bcard__date{font-family:var(--en);letter-spacing:.05em;}
 .bcard__ttl{font-size:var(--fs-md);font-weight:500;line-height:1.5;margin-bottom:var(--sp-xs);}
 .bcard__ex{font-size:var(--fs-sm);color:var(--text-subtle);line-height:1.8;}
@@ -419,7 +420,7 @@
 /* ---- Blog article（個別記事ページ） ---- */
 .art__head{text-align:center;margin-bottom:clamp(var(--sp-lg),6vw,40px);}
 .art__meta{display:flex;gap:var(--sp-sm);justify-content:center;align-items:center;font-size:var(--fs-xs);color:var(--text-subtle);margin-bottom:14px;}
-.art__cat{font-family:var(--en);letter-spacing:.1em;color:var(--gold);}
+.art__cat{font-family:var(--jp);letter-spacing:.1em;color:var(--gold);}
 .art__date{font-family:var(--en);letter-spacing:.05em;}
 .art__title{font-size:clamp(21px,5.5vw,28px);font-weight:500;line-height:1.55;letter-spacing:.02em;}
 .art__cover{width:100%;aspect-ratio:16/9;border-radius:var(--r-md);margin-bottom:clamp(28px,6vw,44px);object-fit:cover;}
@@ -434,7 +435,7 @@
 .art__nav{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-sm);margin-top:clamp(36px,8vw,52px);padding-top:var(--sp-lg);border-top:1px solid var(--border-subtle);font-size:var(--fs-sm);}
 .art__nav a{color:var(--text-subtle);transition:color .2s;}
 .art__nav a:hover{color:var(--gold);}
-.art__navc{font-family:var(--en);letter-spacing:.08em;}
+.art__navc{font-family:var(--jp);letter-spacing:.08em;}
 
 /* ---- Contact form ---- */
 .lede{text-align:center;font-size:var(--fs-sm);color:var(--text-subtle);line-height:2;margin-bottom:36px;}
