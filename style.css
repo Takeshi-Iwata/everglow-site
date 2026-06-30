@@ -128,7 +128,8 @@
 
   /* ---- Header ---- */
   .hd{position:sticky;top:0;z-index:50;height:72px;display:flex;align-items:center;gap:var(--sp-sm);padding:0 var(--sp-md);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-subtle);}
-  .hd__logo{margin-right:auto;font-family:var(--en);font-weight:600;font-size:var(--fs-xl);letter-spacing:.1em;}
+  .hd__logo{margin-right:auto;line-height:0;display:inline-flex;align-items:center;}
+  .hd__logo-img{height:30px;width:auto;display:inline-block;}
   .hd__nav{display:none;gap:26px;font-family:var(--en);font-weight:600;font-size:var(--fs-md);letter-spacing:.06em;}
   .hd__nav a{position:relative;padding:var(--sp-2xs) 0;}
   .hd__nav a:hover{color:var(--gold);}
@@ -269,7 +270,17 @@
   .ft__sns a:hover{color:var(--gold);}
   .ft__sns svg{width:26px;height:26px;display:block;}
   .ft__brand{text-align:center;padding-top:var(--sp-xl);}
-  .ft__logo{font-family:var(--en);font-weight:600;font-size:var(--fs-2xl);letter-spacing:.08em;}
+  .ft__logo{line-height:0;}
+  .ft__logo-img{height:46px;width:auto;display:inline-block;vertical-align:middle;}
+  .logo--dark{display:none;} /* 既定（ライト）はライト用ロゴ */
+  [data-theme="dark"] .logo--light{display:none;}
+  [data-theme="dark"] .logo--dark{display:inline-block;}
+  [data-theme="light"] .logo--light{display:inline-block;}
+  [data-theme="light"] .logo--dark{display:none;}
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .logo--light{display:none;}
+    :root:not([data-theme="light"]) .logo--dark{display:inline-block;}
+  }
   .ft__copy{font-family:var(--en);font-size:var(--fs-xs);letter-spacing:.15em;color:var(--text-subtle);margin-top:6px;}
 
   /* ---- 予約FAB（右下固定・水紋） ---- */

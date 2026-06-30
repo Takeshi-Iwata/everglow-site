@@ -86,7 +86,7 @@ const SNS = `<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="n
     <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h2.7l-5.9 6.75L21.6 21h-5.43l-4.25-5.56L6.86 21H4.15l6.3-7.2L3.6 3h5.57l3.84 5.08L17.5 3zm-.95 16.4h1.5L8.02 4.5H6.4l10.15 14.9z"/></svg></a>`;
 
 const header = () => `<header class="hd">
-  <a class="hd__logo" href="index.html">Everglow.</a>
+  <a class="hd__logo" href="index.html"><img class="hd__logo-img logo--light" src="logo.svg" alt="Everglow" width="96" height="63"><img class="hd__logo-img logo--dark" src="logo-dark.svg" alt="Everglow" width="96" height="63"></a>
   <nav class="hd__nav">${HEADNAV.map((h) => `<a href="${h}">${NAV.find((n) => n[0] === h)[1]}</a>`).join('')}</nav>
   <a class="btn btn--gold hd__cta" href="reserve.html" style="height:42px;padding:0 22px;">予約する</a>
   <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
@@ -115,7 +115,7 @@ const footer = (cur) => `<footer class="ft">
     <h3 class="ft__h">SNS</h3>
     <div class="ft__sns">${SNS}</div>
     <hr class="ft__hr">
-    <div class="ft__brand"><div class="ft__logo">Everglow.</div><div class="ft__copy">© 2026 Everglow</div></div>
+    <div class="ft__brand"><div class="ft__logo"><img class="ft__logo-img logo--light" src="logo.svg" alt="Everglow" width="96" height="63"><img class="ft__logo-img logo--dark" src="logo-dark.svg" alt="Everglow" width="96" height="63"></div><div class="ft__copy">© 2026 Everglow</div></div>
   </div>
 </footer>
 <a class="fab" id="fab" href="reserve.html" aria-label="ご予約はこちら">
