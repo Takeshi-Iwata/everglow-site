@@ -239,7 +239,7 @@
   .news__ttl{font-size:var(--fs-sm);line-height:1.6;}
 
   /* ---- Access ---- */
-  .map{aspect-ratio:361/240;border-radius:var(--r-md);margin-bottom:14px;}
+  .map{display:block;width:100%;aspect-ratio:361/240;border:0;border-radius:var(--r-md);margin-bottom:14px;}
   .map__btn{text-align:center;margin-bottom:var(--sp-lg);}
   .access__list{list-style:none;border-top:1px solid var(--border-subtle);}
   .access__list li{display:flex;gap:14px;align-items:flex-start;padding:20px var(--sp-3xs);border-bottom:1px solid var(--border-subtle);}
