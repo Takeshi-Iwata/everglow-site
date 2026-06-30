@@ -129,7 +129,7 @@
   /* ---- Header ---- */
   .hd{position:sticky;top:0;z-index:50;height:72px;display:flex;align-items:center;gap:var(--sp-sm);padding:0 var(--sp-md);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-subtle);}
   .hd__logo{margin-right:auto;line-height:0;display:inline-flex;align-items:center;}
-  .hd__logo-img{height:40px;width:auto;display:inline-block;}
+  .hd__logo-img{height:48px;width:auto;display:inline-block;}
   .hd__nav{display:none;gap:26px;font-family:var(--en);font-weight:600;font-size:var(--fs-md);letter-spacing:.06em;}
   .hd__nav a{position:relative;padding:var(--sp-2xs) 0;}
   .hd__nav a:hover{color:var(--gold);}
