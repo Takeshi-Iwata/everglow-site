@@ -50,7 +50,9 @@ function buildSlots(dateISO, durationMin, taken) {
   const { todayISO, curMin } = nowJST();
   const minStart = dateISO === todayISO ? curMin : -1; // 当日は過ぎた枠を除外
   const slots = [];
-  for (let t = open; t <= close - durationMin; t += SLOT_MIN) {
+  // 最終受付は「閉店の1時間前」かつ「施術が閉店までに終わる」時刻まで（掲示ポリシーに合わせる）
+  const lastStart = close - Math.max(durationMin, 60);
+  for (let t = open; t <= lastStart; t += SLOT_MIN) {
     const end = t + durationMin;
     let available = t > minStart;
     if (available) for (const r of taken) { if (t < r.end && r.start < end) { available = false; break; } }
