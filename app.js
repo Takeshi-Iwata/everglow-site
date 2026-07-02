@@ -1,9 +1,11 @@
   // ページ読み込みローダー：読み込み完了後、最低表示時間を確保してフェードアウト
   const loader=document.getElementById('loader');
   if(loader){
+    const MIN=1100; // ナビ開始からの最低表示時間（ms）。長すぎず適度に
     const hide=()=>loader.classList.add('is-done');
-    if(document.readyState==='complete')setTimeout(hide,300);
-    else addEventListener('load',()=>setTimeout(hide,Math.max(0,650-performance.now())));
+    const schedule=()=>setTimeout(hide,Math.max(0,MIN-performance.now()));
+    if(document.readyState==='complete')schedule();
+    else addEventListener('load',schedule);
   }
 
 const burger=document.getElementById('burger'),panel=document.getElementById('panel'),pc=document.getElementById('panelClose');
