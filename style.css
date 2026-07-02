@@ -319,15 +319,35 @@
 
   /* ---- Desktop ---- */
   @media(min-width:768px){
-    :root{--maxw:600px;}
+    :root{--maxw:680px;}
     .hd__nav,.hd__cta{display:flex;}
     .burger{display:none;}
     .sec{padding:var(--sp-4xl) 0;}
     .sec__title .en{font-size:var(--fs-4xl);}
     .hero__img{aspect-ratio:16/8;}
-    .menu__grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-md);}
+    /* メニュー：列を広げて折り返し解消 */
+    #menu .wrap{max-width:980px;}
+    .menu__grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-md);margin:0 auto;}
     .menu__grid .mcard{margin-bottom:0;}
-    .menu__grid{max-width:980px;margin:0 auto;}
+    /* Our Story：画像｜テキストの2カラム（交互配置） */
+    #concept .wrap{max-width:900px;}
+    .osalon{gap:var(--sp-4xl);}
+    .osf{display:flex;align-items:center;}
+    .osf:nth-child(even){flex-direction:row-reverse;}
+    .osf__img{width:58%;margin:0;}
+    .osf:nth-child(even) .osf__img{margin:0;}
+    .osf__card{width:48%;margin:0;padding:var(--sp-xl);}
+    .osf:nth-child(odd) .osf__card{margin-left:-64px;}
+    .osf:nth-child(even) .osf__card{margin-right:-64px;}
+    /* 初めての方へ：3カラム */
+    .fpoints{flex-direction:row;}
+    .fpoints li{flex:1;flex-direction:column;align-items:flex-start;gap:var(--sp-xs);}
+    /* アクセス：地図｜情報の2カラム */
+    #access .wrap{max-width:900px;display:grid;grid-template-columns:1.05fr 1fr;column-gap:40px;align-items:start;}
+    #access .sec__title{grid-column:1/-1;}
+    #access .map{grid-column:1;grid-row:2;margin-bottom:14px;}
+    #access .map__btn{grid-column:1;grid-row:3;}
+    #access .access__list{grid-column:2;grid-row:2/4;border-top:0;}
   }
 
 /* ---- Sub-page hero（各下層ページ共通） ---- */
