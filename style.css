@@ -352,6 +352,7 @@
     .osf__card{flex:1;margin:0 0 -36px;padding:var(--sp-xl);}
     .osf:nth-child(odd) .osf__card{margin-left:-40px;}
     .osf:nth-child(even) .osf__card{margin-right:-40px;}
+    #concept .center{margin-top:var(--sp-3xl);} /* カードのはみ出し分の余白を確保 */
     /* 初めての方へ：3カラム */
     .fpoints{flex-direction:row;}
     .fpoints li{flex:1;flex-direction:column;align-items:flex-start;gap:var(--sp-xs);}
