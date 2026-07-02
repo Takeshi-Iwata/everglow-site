@@ -332,7 +332,7 @@
     /* Our Story：画像｜テキストの2カラム（交互配置） */
     #concept .wrap{max-width:900px;}
     .osalon{gap:var(--sp-4xl);}
-    .osf{display:flex;align-items:center;}
+    .osf{display:flex;align-items:flex-end;}
     .osf:nth-child(even){flex-direction:row-reverse;}
     .osf__img{width:58%;flex:none;margin:0;}
     .osf:nth-child(even) .osf__img{margin:0;}
