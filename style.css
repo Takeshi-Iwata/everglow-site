@@ -577,7 +577,7 @@ button.bk-cal__day:hover{border-color:var(--gold);background:var(--bg-subtle);}
   .bcard:hover .bcard__img{opacity:.88;}
   /* Access（下層）：地図｜店舗情報の2カラム */
   .access-page .wrap{max-width:920px;display:grid;grid-template-columns:1fr 1fr;column-gap:48px;align-items:start;}
-  .access-page .map{grid-column:1;grid-row:1;aspect-ratio:1/1;margin-bottom:14px;}
+  .access-page .map{grid-column:1;grid-row:1;aspect-ratio:4/3;margin-bottom:14px;}
   .access-page .map__btn{grid-column:1;grid-row:2;}
   .access-page .mnote{grid-column:1;grid-row:3;}
   .access-page .access__list{grid-column:2;grid-row:1/4;border-top:0;}
