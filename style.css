@@ -404,6 +404,13 @@
   .prof__en{grid-column:2;text-align:left;}
   .prof__row{grid-column:2;}
 }
+/* Menu：PCは2カラム（メニュー見開き風）。カテゴリは分割しない */
+@media(min-width:768px){
+  .menu-page .wrap{max-width:900px;columns:2;column-gap:64px;}
+  .menu-page .mcat{break-inside:avoid;}
+  .menu-page .mfeat{break-inside:avoid;}
+  .menu-page .mnote{column-span:all;margin-top:var(--sp-2xl);}
+}
 /* ---- Our Salon: About（サロンの想い） ---- */
 .about__lead{border-left:2px solid var(--gold);padding-left:var(--sp-md);font-size:var(--fs-lg);font-weight:500;line-height:1.85;letter-spacing:.02em;margin-bottom:var(--sp-lg);}
 .about__img{aspect-ratio:361/262;border-radius:var(--r-md);margin-bottom:var(--sp-lg);}
