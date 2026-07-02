@@ -566,8 +566,8 @@ button.bk-cal__day:hover{border-color:var(--gold);background:var(--bg-subtle);}
 .feat__tx{font-size:var(--fs-sm);color:var(--text-subtle);line-height:1.95;}
 
 @media(min-width:768px){
-  .ggrid{grid-template-columns:1fr 1fr 1fr;}
-  .gitem.wide{grid-column:span 2;}
+  .ggrid{display:block;columns:3;column-gap:12px;}
+  .gitem{margin:0 0 12px;break-inside:avoid;}
   .feat{flex-direction:row;}
   .feat__item{flex:1;}
 }
