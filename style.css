@@ -355,9 +355,11 @@
     .osf:nth-child(odd) .osf__card{margin-left:-40px;}
     .osf:nth-child(even) .osf__card{margin-right:-40px;}
     #concept .center{margin-top:var(--sp-3xl);} /* カードのはみ出し分の余白を確保 */
-    /* 初めての方へ：3カラム */
-    .fpoints{flex-direction:row;}
-    .fpoints li{flex:1;flex-direction:column;align-items:flex-start;gap:var(--sp-xs);}
+    /* 初めての方へ：3カラム（PCは幅・カード・アイコンを大きく） */
+    #reserve .wrap{max-width:900px;}
+    .fpoints{flex-direction:row;gap:var(--sp-md);}
+    .fpoints li{flex:1;flex-direction:column;align-items:flex-start;gap:var(--sp-sm);padding:var(--sp-lg);}
+    .fp__ic svg{width:34px;height:34px;}
     /* アクセス：地図｜情報の2カラム */
     #access .wrap{max-width:900px;display:grid;grid-template-columns:1.05fr 1fr;column-gap:40px;align-items:start;}
     #access .sec__title{grid-column:1/-1;}
