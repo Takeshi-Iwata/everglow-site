@@ -201,7 +201,7 @@ function buildIndex(posts) {
   const html = `${docHead('Blog', 'Everglow からのお知らせ・ブログ。', 'blog.html')}
 ${header()}
 <section class="subhero"><span class="ghost" aria-hidden="true">Blog</span><h1><span class="en">Blog</span><span class="jp">お知らせ・ブログ</span></h1></section>
-<main class="page" id="main" tabindex="-1"><div class="wrap">
+<main class="page blog-page" id="main" tabindex="-1"><div class="wrap">
   ${chips}
   <div class="blist" data-rev>
 ${cards}

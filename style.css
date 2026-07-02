@@ -568,6 +568,13 @@ button.bk-cal__day:hover{border-color:var(--gold);background:var(--bg-subtle);}
 @media(min-width:768px){
   .ggrid{display:block;columns:3;column-gap:12px;}
   .gitem{margin:0 0 12px;break-inside:avoid;}
+  /* Blog一覧：3カラムのカードグリッド */
+  .blog-page .wrap{max-width:980px;}
+  .blist{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 24px;}
+  .bcard{border-bottom:0;padding:0;}
+  .bcard:hover{background:none;}
+  .bcard__img{transition:opacity .25s;}
+  .bcard:hover .bcard__img{opacity:.88;}
   .feat{flex-direction:row;}
   .feat__item{flex:1;}
 }
