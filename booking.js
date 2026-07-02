@@ -201,14 +201,14 @@
   }
 
   async function getAvailability(dateISO, menuId) {
-    const r = await fetch(`/.netlify/functions/availability?date=${dateISO}&menu=${encodeURIComponent(menuId)}`);
+    const r = await fetch(`/api/availability?date=${dateISO}&menu=${encodeURIComponent(menuId)}`);
     if (!r.ok) throw new Error('availability');
     const j = await r.json();
     return j.slots || [];
   }
 
   async function submitReservation(payload) {
-    const r = await fetch('/.netlify/functions/reserve', {
+    const r = await fetch('/api/reserve', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
