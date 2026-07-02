@@ -1,3 +1,11 @@
+  // ページ読み込みローダー：読み込み完了後、最低表示時間を確保してフェードアウト
+  const loader=document.getElementById('loader');
+  if(loader){
+    const hide=()=>loader.classList.add('is-done');
+    if(document.readyState==='complete')setTimeout(hide,300);
+    else addEventListener('load',()=>setTimeout(hide,Math.max(0,650-performance.now())));
+  }
+
 const burger=document.getElementById('burger'),panel=document.getElementById('panel'),pc=document.getElementById('panelClose');
   const toggle=()=>{const o=panel.classList.toggle('open');burger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';};
   burger.addEventListener('click',toggle);

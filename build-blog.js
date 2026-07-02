@@ -170,6 +170,7 @@ ${headMeta(fullTitle, desc, pathRel, opts.ogType || 'website')}${opts.jsonld ? `
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="loader" id="loader" aria-hidden="true"><img class="loader__mark" src="loading.svg" alt=""></div>
 <a class="skip" href="#main">本文へスキップ</a>`;
 };
 const docFoot = `<script src="app.js" defer></script>
