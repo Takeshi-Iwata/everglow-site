@@ -336,7 +336,7 @@
     .osf:nth-child(even){flex-direction:row-reverse;}
     .osf__img{width:58%;flex:none;margin:0;}
     .osf:nth-child(even) .osf__img{margin:0;}
-    .osf__card{flex:1;margin:0;padding:var(--sp-xl);}
+    .osf__card{flex:1;margin:0 0 -36px;padding:var(--sp-xl);}
     .osf:nth-child(odd) .osf__card{margin-left:-40px;}
     .osf:nth-child(even) .osf__card{margin-right:-40px;}
     /* 初めての方へ：3カラム */
