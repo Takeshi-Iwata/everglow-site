@@ -178,12 +178,16 @@ const docFoot = `<script src="app.js" defer></script>
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const ph = (cls, comment) => `<div class="ph ${cls}">${comment ? `<!-- ${comment} -->` : ''}</div>`;
+// microCMS(imgix)の画像を用途別に自動リサイズ・軽量化（WebP/AVIF自動・圧縮）
+const imgix = (url, params) => (url ? url + (url.includes('?') ? '&' : '?') + params : '');
+const THUMB = 'w=800&h=500&fit=crop&q=72&auto=compress,format'; // 一覧サムネ 16:10
+const COVER = 'w=1200&h=675&fit=crop&q=75&auto=compress,format'; // 記事カバー 16:9
 
 /* ---------- 一覧ページ blog.html ---------- */
 function buildIndex(posts) {
   const cards = posts
     .map(
-      (p) => `    <a class="bcard" href="blog-${p.slug}.html" data-cat="${esc(p.category)}">${p.cover ? `<img class="bcard__img" src="${p.cover}" alt="">` : ph('bcard__img')}<div class="bcard__meta"><span class="bcard__cat">${esc(p.category)}</span><span class="bcard__date">${esc(p.date)}</span></div><h2 class="bcard__ttl">${esc(p.title)}</h2><p class="bcard__ex">${esc(p.excerpt)}</p></a>`
+      (p) => `    <a class="bcard" href="blog-${p.slug}.html" data-cat="${esc(p.category)}">${p.cover ? `<img class="bcard__img" src="${imgix(p.cover, THUMB)}" alt="" loading="lazy">` : ph('bcard__img')}<div class="bcard__meta"><span class="bcard__cat">${esc(p.category)}</span><span class="bcard__date">${esc(p.date)}</span></div><h2 class="bcard__ttl">${esc(p.title)}</h2><p class="bcard__ex">${esc(p.excerpt)}</p></a>`
     )
     .join('\n');
   // チップは実在カテゴリから生成（好みの並び順を優先し、未知のものは後ろに付ける）
@@ -239,7 +243,7 @@ ${header()}
       <div class="art__meta"><span class="art__cat">${esc(p.category)}</span><span class="art__date">${esc(p.date)}</span></div>
       <h1 class="art__title">${esc(p.title)}</h1>
     </header>
-    ${p.cover ? `<img class="art__cover" src="${p.cover}" alt="">` : ph('art__cover')}
+    ${p.cover ? `<img class="art__cover" src="${imgix(p.cover, COVER)}" alt="">` : ph('art__cover')}
     <div class="art__body" data-rev>
 ${p.body}
     </div>
