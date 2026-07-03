@@ -593,3 +593,11 @@ button.bk-cal__day:hover{border-color:var(--gold);background:var(--bg-subtle);}
   :root:not([data-theme="light"]) .firstvisit{background:var(--warm-10);}
   :root:not([data-theme="light"]) .fpoints li{background:var(--warm-20);}
 }
+
+/* タブレット（768〜1023px）：3カラムで詰まる箇所を緩和 */
+@media(min-width:768px) and (max-width:1023px){
+  .blist{grid-template-columns:repeat(2,1fr);}   /* Blog一覧 3→2カラム */
+  .ggrid{columns:2;}                              /* Gallery 3→2カラム */
+  .fpoints li{padding:var(--sp-md);}              /* 初めての方へ：カード余白を詰める */
+  .ft__pages{grid-template-columns:1fr;}          /* フッターPages：1列化で折り返し防止 */
+}
