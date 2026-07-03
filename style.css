@@ -277,7 +277,8 @@
   .ft__sns a:hover{color:var(--gold);}
   .ft__sns svg{width:26px;height:26px;display:block;}
   .ft__brand{text-align:center;padding-top:var(--sp-xl);}
-  .ft__logo{line-height:0;}
+  .ft__logo{line-height:0;display:inline-block;transition:opacity .2s;}
+  a.ft__logo:hover{opacity:.68;}
   .ft__logo-img{height:46px;width:auto;display:inline-block;vertical-align:middle;}
   .logo--dark{display:none;} /* 既定（ライト）はライト用ロゴ */
   [data-theme="dark"] .logo--light{display:none;}

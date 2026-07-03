@@ -115,7 +115,7 @@ const footer = (cur) => `<footer class="ft">
     <h3 class="ft__h">SNS</h3>
     <div class="ft__sns">${SNS}</div>
     <hr class="ft__hr">
-    <div class="ft__brand"><div class="ft__logo"><img class="ft__logo-img logo--light" src="logo.svg" alt="Everglow" width="96" height="63"><img class="ft__logo-img logo--dark" src="logo-dark.svg" alt="Everglow" width="96" height="63"></div><div class="ft__copy">© 2026 Everglow</div></div>
+    <div class="ft__brand"><a class="ft__logo" href="index.html"><img class="ft__logo-img logo--light" src="logo.svg" alt="Everglow" width="96" height="63"><img class="ft__logo-img logo--dark" src="logo-dark.svg" alt="Everglow" width="96" height="63"></a><div class="ft__copy">© 2026 Everglow</div></div>
   </div>
 </footer>
 <a class="fab" id="fab" href="reserve.html" aria-label="ご予約はこちら">
