@@ -8,12 +8,12 @@
 <meta name="description" content="湘南の住宅街で、夫婦ふたりが営む完全予約制の小さなプライベートサロン。落ち着いた空間とゆとりある時間の中で、おひとりおひとりに丁寧に向き合います。">
 <link rel="canonical" href="https://everglow-site.pages.dev/">
 
-<!-- favicon / テーマカラー（公開ドメインが決まったら URL を差し替え） -->
+<!-- favicon / テーマカラー -->
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#fcfcf5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
 
-<!-- OGP / Twitter Card（og:image は images/ogp.jpg〔1200×630〕を後日追加） -->
+<!-- OGP / Twitter Card -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Everglow">
 <meta property="og:locale" content="ja_JP">
@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="湘南の住宅街で、夫婦ふたりが営む完全予約制の小さなプライベートサロン。">
 <meta name="twitter:image" content="https://everglow-site.pages.dev/images/ogp.jpg">
 
-<!-- 構造化データ：美容室（ローカルSEO用。住所・電話・公開ドメインは確定後に実値へ） -->
+<!-- 構造化データ：美容室（ローカルSEO用。住所・電話はデモ用のダミー値） -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,14 +63,14 @@
 
 <header class="hd">
   <a class="hd__logo" href="index.html"><img class="hd__logo-img logo--light" src="logo.svg" alt="Everglow" width="96" height="63"><img class="hd__logo-img logo--dark" src="logo-dark.svg" alt="Everglow" width="96" height="63"></a>
-  <nav class="hd__nav">
+  <nav class="hd__nav" aria-label="グローバルナビゲーション">
     <a href="our-salon.html">Our Salon</a>
     <a href="menu.html">Menu</a>
     <a href="gallery.html">Gallery</a>
     <a href="blog.html">Blog</a>
     <a href="access.html">Access</a><a href="contact.html">Contact</a>
   </nav>
-  <a class="btn btn--gold hd__cta" href="reserve.html" style="height:42px;padding:0 22px;">予約する</a>
+  <a class="btn btn--gold hd__cta" href="reserve.html">予約する</a>
   <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
 </header>
 
@@ -94,7 +94,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="ph hero__img"><img src="images/hero.jpg" alt="スタイリストに髪を整えてもらい、明るい光の中で微笑むお客様" width="1600" height="1068"></div>
+    <div class="ph hero__img"><img src="images/hero.jpg" alt="スタイリストに髪を整えてもらい、明るい光の中で微笑むお客様" width="1600" height="1068" fetchpriority="high"></div>
     <div class="hero__box" data-rev>
       <h1 class="hero__catch">いつまでも、<br>あなたらしく輝けるように。</h1>
       <div class="hero__rule"></div>
@@ -150,7 +150,7 @@
         <div class="ph"><img src="images/gallery-7.jpg" alt="" loading="lazy"></div><div class="ph"><img src="images/gallery-8.jpg" alt="" loading="lazy"></div><div class="ph"><img src="images/gallery-9.jpg" alt="" loading="lazy"></div><div class="ph"><img src="images/gallery-10.jpg" alt="" loading="lazy"></div><div class="ph"><img src="images/gallery-1.jpg" alt="" loading="lazy"></div><div class="ph"><img src="images/gallery-5.jpg" alt="" loading="lazy"></div>
       </div>
     </div>
-    <div class="center" style="margin-top:28px;" data-rev><a class="btn btn--ghost" href="gallery.html">ギャラリーを見る →</a></div>
+    <div class="center center--gap" data-rev><a class="btn btn--ghost" href="gallery.html">ギャラリーを見る →</a></div>
   </section>
 
   <!-- MENU -->
@@ -183,7 +183,7 @@
           </div>
         </article>
       </div>
-      <div class="center" style="margin-top:30px;" data-rev><a class="btn btn--ghost" href="menu.html">メニューをすべて見る →</a></div>
+      <div class="center center--gap" data-rev><a class="btn btn--ghost" href="menu.html">メニューをすべて見る →</a></div>
     </div>
   </section>
 
@@ -208,8 +208,8 @@
         </li>
       </ul>
       <div class="center" data-rev>
-        <a class="btn btn--gold btn--block" href="contact.html" style="max-width:320px;margin:0 auto;">お問い合わせ・ご相談 →</a>
-        <p style="font-size:12px;color:var(--text-subtle);margin-top:12px;">お電話でも承ります　0466-xx-xxxx</p>
+        <a class="btn btn--gold btn--block fv__cta" href="contact.html">お問い合わせ・ご相談 →</a>
+        <p class="fv__tel">お電話でも承ります　<a class="ul" href="tel:0466000000">0466-xx-xxxx</a></p>
       </div>
     </div>
   </section>
@@ -244,7 +244,7 @@
         </li>
         <li>
           <span class="access__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg></span>
-          <div><div class="access__k">電話番号</div><div class="access__v">0466-xx-xxxx</div><div class="access__d">ご予約・髪のお悩み相談も、どうぞお気軽にお電話ください。</div></div>
+          <div><div class="access__k">電話番号</div><div class="access__v"><a class="ul" href="tel:0466000000">0466-xx-xxxx</a></div><div class="access__d">ご予約・髪のお悩み相談も、どうぞお気軽にお電話ください。</div></div>
         </li>
       </ul>
     </div>
@@ -271,8 +271,8 @@
     <hr class="ft__hr">
 
     <h3 class="ft__h">Pages</h3>
-    <nav class="ft__pages">
-      <a class="cur" href="index.html">Home</a>
+    <nav class="ft__pages" aria-label="フッターナビゲーション">
+      <a class="cur" aria-current="page" href="index.html">Home</a>
       <a href="our-salon.html">Our Salon</a>
       <a href="menu.html">Menu</a>
       <a href="gallery.html">Gallery</a>

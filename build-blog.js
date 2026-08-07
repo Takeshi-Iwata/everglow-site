@@ -85,10 +85,10 @@ const SNS = `<a href="https://instagram.com" target="_blank" rel="noopener" aria
     <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 22v-8h2.7l.4-3.4h-3.1V8.4c0-1 .27-1.65 1.7-1.65h1.5V3.7c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.23H7.8V14h2.4v8h3z"/></svg></a>
     <a href="https://x.com" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h2.7l-5.9 6.75L21.6 21h-5.43l-4.25-5.56L6.86 21H4.15l6.3-7.2L3.6 3h5.57l3.84 5.08L17.5 3zm-.95 16.4h1.5L8.02 4.5H6.4l10.15 14.9z"/></svg></a>`;
 
-const header = () => `<header class="hd">
+const header = (cur) => `<header class="hd">
   <a class="hd__logo" href="index.html"><img class="hd__logo-img logo--light" src="logo.svg" alt="Everglow" width="96" height="63"><img class="hd__logo-img logo--dark" src="logo-dark.svg" alt="Everglow" width="96" height="63"></a>
-  <nav class="hd__nav">${HEADNAV.map((h) => `<a href="${h}">${NAV.find((n) => n[0] === h)[1]}</a>`).join('')}</nav>
-  <a class="btn btn--gold hd__cta" href="reserve.html" style="height:42px;padding:0 22px;">予約する</a>
+  <nav class="hd__nav" aria-label="グローバルナビゲーション">${HEADNAV.map((h) => `<a${h === cur ? ' aria-current="page"' : ''} href="${h}">${NAV.find((n) => n[0] === h)[1]}</a>`).join('')}</nav>
+  <a class="btn btn--gold hd__cta" href="reserve.html">予約する</a>
   <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
 </header>
 <div class="panel" id="panel">
@@ -110,7 +110,7 @@ const footer = (cur) => `<footer class="ft">
     </div>
     <hr class="ft__hr">
     <h3 class="ft__h">Pages</h3>
-    <nav class="ft__pages">${NAV.map((n) => `<a${n[0] === cur ? ' class="cur"' : ''} href="${n[0]}">${n[1]}</a>`).join('')}</nav>
+    <nav class="ft__pages" aria-label="フッターナビゲーション">${NAV.map((n) => `<a${n[0] === cur ? ' class="cur" aria-current="page"' : ''} href="${n[0]}">${n[1]}</a>`).join('')}</nav>
     <hr class="ft__hr">
     <h3 class="ft__h">SNS</h3>
     <div class="ft__sns">${SNS}</div>
@@ -129,7 +129,7 @@ const resv = () => `<section class="resv">
   <a class="btn" href="reserve.html">予約する →</a>
 </section>`;
 
-// 公開ドメイン（確定後に置換）。OGP/canonical の絶対URLに使用。
+// 公開ドメイン。OGP/canonical の絶対URLに使用。
 const DOMAIN = process.env.SITE_URL || 'https://everglow-site.pages.dev';
 const OGIMG = `${DOMAIN}/images/ogp.jpg`;
 const escAttr = (s) => esc(s).replace(/"/g, '&quot;');
@@ -199,7 +199,7 @@ function buildIndex(posts) {
     .map((c) => `<a href="#" data-cat="${esc(c)}">${esc(c)}</a>`)
     .join('')}</div>`;
   const html = `${docHead('Blog', 'Everglow からのお知らせ・ブログ。', 'blog.html')}
-${header()}
+${header('blog.html')}
 <section class="subhero"><span class="ghost" aria-hidden="true">Blog</span><h1><span class="en">Blog</span><span class="jp">お知らせ・ブログ</span></h1></section>
 <main class="page blog-page" id="main" tabindex="-1"><div class="wrap">
   ${chips}
@@ -237,7 +237,7 @@ function buildArticle(p, posts, i) {
   };
   const jsonld = `<script type="application/ld+json">\n${JSON.stringify(articleLd, null, 2)}\n</script>`;
   const html = `${docHead(p.title, p.excerpt, `blog-${p.slug}.html`, { ogType: 'article', jsonld })}
-${header()}
+${header('blog.html')}
 <main class="page" id="main" tabindex="-1"><div class="wrap">
   <article class="art">
     <header class="art__head" data-rev>
