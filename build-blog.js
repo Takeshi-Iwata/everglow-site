@@ -45,7 +45,11 @@ async function fetchFromMicroCMS() {
     if (Array.isArray(category)) category = category[0]; // セレクト型
     if (category && typeof category === 'object') category = category.name || category.value || ''; // 参照型
     const cover = (c.cover && c.cover.url) || (c.eyecatch && c.eyecatch.url) || '';
-    const plain = body.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    const plain = body
+      .replace(/<\/(p|h[1-6]|li|blockquote|div|tr|ul|ol|table)>/gi, ' ') // ブロック境界に空白を入れて連結を防ぐ
+      .replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
     const excerpt = c.excerpt || (plain.length > 70 ? plain.slice(0, 70) + '…' : plain);
     return {
       slug: c.id,
@@ -198,7 +202,25 @@ function buildIndex(posts) {
   const chips = `<div class="chips" data-rev role="group" aria-label="カテゴリで絞り込み"><button class="on" type="button" data-cat="" aria-pressed="true">すべて</button>${cats
     .map((c) => `<button type="button" data-cat="${esc(c)}" aria-pressed="false">${esc(c)}</button>`)
     .join('')}</div>`;
-  const html = `${docHead('Blog', 'Everglow からのお知らせ・ブログ。', 'blog.html')}
+  const DESC = 'Everglow のお知らせ・ブログ。ヘアケアやスタイリング、カラーのコツ、サロンからのお知らせをお届けします。湘南・藤沢で夫婦ふたりが営む小さなプライベートサロン。';
+  const blogLd = `<script type="application/ld+json">\n${JSON.stringify(
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: 'Everglow ブログ',
+      url: `${DOMAIN}/blog.html`,
+      publisher: { '@type': 'Organization', name: 'Everglow' },
+      blogPost: posts.map((p) => ({
+        '@type': 'BlogPosting',
+        headline: p.title,
+        datePublished: p.date.replace(/\./g, '-'),
+        url: `${DOMAIN}/blog-${p.slug}.html`,
+      })),
+    },
+    null,
+    2
+  )}\n</script>`;
+  const html = `${docHead('Blog', DESC, 'blog.html', { jsonld: blogLd })}
 ${header('blog.html')}
 <section class="subhero"><span class="ghost" aria-hidden="true">Blog</span><h1><span class="en">Blog</span><span class="jp">お知らせ・ブログ</span></h1></section>
 <main class="page blog-page" id="main" tabindex="-1"><div class="wrap">
@@ -232,6 +254,7 @@ function buildArticle(p, posts, i) {
     articleSection: p.category,
     url: `${DOMAIN}/blog-${p.slug}.html`,
     mainEntityOfPage: `${DOMAIN}/blog-${p.slug}.html`,
+    author: { '@type': 'Organization', name: 'Everglow' },
     publisher: { '@type': 'Organization', name: 'Everglow' },
     ...(p.cover ? { image: p.cover } : {}),
   };
