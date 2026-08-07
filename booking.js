@@ -1,8 +1,8 @@
 /* booking.js — 予約フロー（メニュー→日付→時間→お客様情報→完了）
  *
- * Phase 1: データ層（getMenus / getAvailability / submitReservation）は
- *          下部の MOCK 実装。Phase 2 で Netlify Functions(/.netlify/functions/*)
- *          ＋ Supabase に差し替える（UI 側は無変更で済む設計）。
+ * データ層：getAvailability / submitReservation は Cloudflare Pages Functions
+ *          (/api/availability, /api/reserve) 経由で Supabase に接続。
+ *          getMenus は現状クライアント側の固定データ（料金表と同一）。
  */
 (function () {
   'use strict';
@@ -44,14 +44,18 @@
   };
   const ORDER = ['menu', 'date', 'time', 'info', 'done'];
 
-  function go(step) {
+  function go(step, move = true) {
     els.panels.forEach((p) => (p.hidden = p.dataset.step !== step));
     const idx = ORDER.indexOf(step);
     [...els.steps.children].forEach((d, i) => {
       d.classList.toggle('on', i === idx);
       d.classList.toggle('done', i < idx);
     });
+    if (!move) return; // 初期化時はスクロール／フォーカスを動かさない
     root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const panel = els.panels.find((p) => p.dataset.step === step);
+    const h = panel && panel.querySelector('.bk__h');
+    if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
   }
 
   /* ---------- Step 1: メニュー ---------- */
@@ -66,9 +70,8 @@
       )
       .join('');
     els.menus.querySelectorAll('.bk-menu').forEach((b) =>
-      b.addEventListener('click', async () => {
-        const menus2 = await getMenus();
-        state.menu = menus2.find((m) => m.id === b.dataset.id);
+      b.addEventListener('click', () => {
+        state.menu = menus.find((m) => m.id === b.dataset.id);
         state.date = null; state.time = null;
         renderDates();
         go('date');
@@ -155,8 +158,8 @@
     const data = {
       menuId: state.menu.id, menuName: state.menu.name, price: state.menu.price, durationMin: state.menu.min,
       date: state.date, time: state.time,
-      name: els.form.name.value.trim(), tel: els.form.tel.value.trim(),
-      email: els.form.email.value.trim(), note: els.form.note.value.trim(),
+      name: els.form.elements.name.value.trim(), tel: els.form.elements.tel.value.trim(),
+      email: els.form.elements.email.value.trim(), note: els.form.elements.note.value.trim(),
     };
     btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = '送信中…';
     try {
@@ -183,7 +186,7 @@
   );
 
   /* ================= データ層（Phase 2 で差し替え） ================= */
-  // 本番では fetch('/.netlify/functions/menus' 等) に置き換える。
+  // メニューは固定データ。必要なら /api/menus 等に差し替え可能（UIは無変更）。
   async function getMenus() {
     return [
       { id: 'cut', name: 'カット', price: 5000, min: 60 },
@@ -221,5 +224,5 @@
 
   /* ---------- 初期化 ---------- */
   renderMenus();
-  go('menu');
+  go('menu', false);
 })();
