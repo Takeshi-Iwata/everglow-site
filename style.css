@@ -392,6 +392,7 @@
 .mnote{font-size:var(--fs-xs);color:var(--text-subtle);text-align:center;margin-top:var(--sp-lg);line-height:2;}
 
 /* ---- Our Salon: Profile（スタイリスト紹介） ---- */
+.os-sec + .os-sec{margin-top:66px;}
 .profile{display:flex;flex-direction:column;gap:52px;margin:var(--sp-xs) 0 var(--sp-2xs);}
 .prof__photo{width:160px;height:160px;border-radius:50%;margin:0 auto var(--sp-md);}
 .prof__name{text-align:center;font-size:var(--fs-xl);font-weight:var(--fw-medium);line-height:var(--lh-xl);letter-spacing:.06em;}

@@ -21,6 +21,28 @@
 <meta name="twitter:title" content="Our Salon ｜ Everglow">
 <meta name="twitter:description" content="湘南の住宅街で、夫婦ふたりが営む完全予約制の小さなプライベートサロン Everglow について。">
 <meta name="twitter:image" content="https://everglow-site.pages.dev/images/ogp.jpg">
+<!-- 構造化データ：スタイリスト（Person。名前・肩書はデモ用） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "葉山 涼",
+      "jobTitle": "代表スタイリスト",
+      "image": "https://everglow-site.pages.dev/images/staff-ryo.jpg",
+      "worksFor": { "@type": "HairSalon", "name": "Everglow", "url": "https://everglow-site.pages.dev/" }
+    },
+    {
+      "@type": "Person",
+      "name": "葉山 美月",
+      "jobTitle": "スタイリスト・カラーリスト",
+      "image": "https://everglow-site.pages.dev/images/staff-mizuki.jpg",
+      "worksFor": { "@type": "HairSalon", "name": "Everglow", "url": "https://everglow-site.pages.dev/" }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -54,7 +76,8 @@
 <main class="page" id="main" tabindex="-1"><div class="wrap">
 
   <!-- Profile：スタイリスト紹介 -->
-  <h2 class="sec__title"><span class="en">Profile</span><span class="jp">スタイリスト紹介</span></h2>
+  <section class="os-sec" aria-labelledby="profile-h">
+  <h2 class="sec__title" id="profile-h"><span class="en">Profile</span><span class="jp">スタイリスト紹介</span></h2>
   <div class="profile">
     <article class="prof" data-rev>
       <div class="ph prof__photo"><img src="images/staff-ryo.jpg" alt="代表スタイリスト 葉山 涼" width="900" height="600"></div>
@@ -73,9 +96,11 @@
       <div class="prof__row"><div class="prof__lbl">メッセージ</div><p class="prof__tx">サロンで過ごす時間が「自分へのちょっとしたご褒美」になるように。「また来たい」と思っていただけることが、何よりの励みです。</p></div>
     </article>
   </div>
+  </section>
 
   <!-- About：サロンの想い -->
-  <h2 class="sec__title" style="margin-top:66px;"><span class="en">About</span><span class="jp">サロンの想い</span></h2>
+  <section class="os-sec" aria-labelledby="about-h">
+  <h2 class="sec__title" id="about-h"><span class="en">About</span><span class="jp">サロンの想い</span></h2>
   <p class="about__lead" data-rev>“通うたびに輝く”を、<br>あたりまえに。</p>
   <div class="ph about__img" data-rev><img src="images/about.jpg" alt="Everglow のサロンの様子" width="1200" height="800"></div>
   <div class="prose" data-rev>
@@ -83,14 +108,17 @@
     <p>大型店では難しい、ゆとりある時間と落ち着いた空間の中で、おひとりおひとりに丁寧に向き合うことを大切にしています。髪のお悩みも、なりたいイメージも、まずはじっくりとお聞かせください。</p>
     <p>日々のお手入れまで見据えて、長く心地よく付き合えるスタイルをご提案します。通うたびに少しずつ、あなたらしい輝きを重ねていけるように。</p>
   </div>
+  </section>
 
   <!-- Feature：3つの特徴 -->
-  <h2 class="sec__title" style="margin-top:66px;"><span class="en">Feature</span><span class="jp">えらばれる理由</span></h2>
+  <section class="os-sec" aria-labelledby="feature-h">
+  <h2 class="sec__title" id="feature-h"><span class="en">Feature</span><span class="jp">えらばれる理由</span></h2>
   <div class="feat" data-rev>
     <div class="feat__item"><div class="feat__no">01</div><h3 class="feat__ttl">髪と頭皮にやさしい施術</h3><p class="feat__tx">オーガニック系の薬剤を中心に、ダメージを抑えた施術を。仕上がりの美しさと、髪本来の健やかさの両立を目指します。</p></div>
     <div class="feat__item"><div class="feat__no">02</div><h3 class="feat__ttl">丁寧なカウンセリング</h3><p class="feat__tx">骨格・髪質・ライフスタイルを伺い、ご自宅でも再現しやすいスタイルへ。「なんとなく似合わない」をなくします。</p></div>
     <div class="feat__item"><div class="feat__no">03</div><h3 class="feat__ttl">透明感のあるカラー</h3><p class="feat__tx">スタイリスト・カラーリストが、肌なじみのよいニュアンスカラーをご提案。白髪ぼかしや、伸びても自然になじむデザインも得意です。</p></div>
   </div>
+  </section>
 </div></main>
 <section class="resv">
   <div class="en">Reservation</div>
