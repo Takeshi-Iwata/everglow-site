@@ -44,9 +44,9 @@ const burger=document.getElementById('burger'),panel=document.getElementById('pa
     const cards=[...document.querySelectorAll('.bcard')];
     const empty=document.querySelector('.bempty');
     chips.addEventListener('click',e=>{
-      const a=e.target.closest('a');if(!a)return;e.preventDefault();
-      chips.querySelectorAll('a').forEach(x=>x.classList.toggle('on',x===a));
-      const cat=a.dataset.cat;
+      const btn=e.target.closest('button');if(!btn)return;
+      chips.querySelectorAll('button').forEach(x=>{const on=x===btn;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on?'true':'false');});
+      const cat=btn.dataset.cat;
       let shown=0;
       cards.forEach(c=>{const hit=!cat||c.dataset.cat===cat;c.hidden=!hit;if(hit)shown++;});
       if(empty)empty.hidden=shown>0;

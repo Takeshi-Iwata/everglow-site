@@ -467,8 +467,8 @@
 
 /* ---- Blog page ---- */
 .chips{display:flex;flex-wrap:wrap;gap:var(--sp-xs);margin-bottom:var(--sp-lg);}
-.chips a{font-size:var(--fs-xs);letter-spacing:.05em;padding:var(--sp-xs) var(--sp-md);border:1px solid var(--border);border-radius:var(--r-pill);color:var(--text-subtle);transition:.2s;}
-.chips a:hover,.chips a.on{background:var(--gold);color:#fff;border-color:var(--gold);}
+.chips a,.chips button{font:inherit;font-size:var(--fs-xs);letter-spacing:.05em;padding:var(--sp-xs) var(--sp-md);border:1px solid var(--border);border-radius:var(--r-pill);background:none;color:var(--text-subtle);cursor:pointer;transition:.2s;}
+.chips a:hover,.chips a.on,.chips button:hover,.chips button.on{background:var(--gold);color:#fff;border-color:var(--gold);}
 .bcard{display:block;border-bottom:1px solid var(--border-subtle);padding:var(--sp-lg) var(--sp-2xs);transition:background .2s;}
 .bcard:hover{background:var(--bg-subtle);}
 .bcard[hidden]{display:none;}

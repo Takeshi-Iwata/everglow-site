@@ -13,11 +13,14 @@
   let visible = items.slice();
   if (chips) {
     chips.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if (!a) return;
-      e.preventDefault();
-      chips.querySelectorAll('a').forEach((x) => x.classList.toggle('on', x === a));
-      const cat = a.dataset.cat;
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      chips.querySelectorAll('button').forEach((x) => {
+        const on = x === btn;
+        x.classList.toggle('on', on);
+        x.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      const cat = btn.dataset.cat;
       items.forEach((it) => { it.hidden = cat && it.dataset.cat !== cat; });
       visible = items.filter((it) => !it.hidden);
     });

@@ -195,8 +195,8 @@ function buildIndex(posts) {
   const PREFERRED = ['お知らせ', 'スタイル', 'ヘアケア', 'カラー'];
   const present = [...new Set(posts.map((p) => p.category))];
   const cats = [...PREFERRED.filter((c) => present.includes(c)), ...present.filter((c) => !PREFERRED.includes(c))];
-  const chips = `<div class="chips" data-rev><a class="on" href="#" data-cat="">すべて</a>${cats
-    .map((c) => `<a href="#" data-cat="${esc(c)}">${esc(c)}</a>`)
+  const chips = `<div class="chips" data-rev role="group" aria-label="カテゴリで絞り込み"><button class="on" type="button" data-cat="" aria-pressed="true">すべて</button>${cats
+    .map((c) => `<button type="button" data-cat="${esc(c)}" aria-pressed="false">${esc(c)}</button>`)
     .join('')}</div>`;
   const html = `${docHead('Blog', 'Everglow からのお知らせ・ブログ。', 'blog.html')}
 ${header('blog.html')}

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(d){d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t)}catch(e){}})(document.documentElement)</script>
 <title>Gallery ｜ Everglow</title>
-<meta name="description" content="Everglow のスタイルギャラリー。">
+<meta name="description" content="Everglow のスタイルギャラリー。カット・カラー・パーマ・アレンジの施術例を写真でご紹介。湘南・藤沢で夫婦ふたりが営む小さなプライベートサロン。">
 <link rel="canonical" href="https://everglow-site.pages.dev/gallery.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#fcfcf5" media="(prefers-color-scheme: light)">
@@ -14,12 +14,12 @@
 <meta property="og:site_name" content="Everglow">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="Gallery ｜ Everglow">
-<meta property="og:description" content="Everglow のスタイルギャラリー。">
+<meta property="og:description" content="Everglow のスタイルギャラリー。カット・カラー・パーマ・アレンジの施術例を写真でご紹介。湘南・藤沢で夫婦ふたりが営む小さなプライベートサロン。">
 <meta property="og:url" content="https://everglow-site.pages.dev/gallery.html">
 <meta property="og:image" content="https://everglow-site.pages.dev/images/ogp.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Gallery ｜ Everglow">
-<meta name="twitter:description" content="Everglow のスタイルギャラリー。">
+<meta name="twitter:description" content="Everglow のスタイルギャラリー。カット・カラー・パーマ・アレンジの施術例を写真でご紹介。湘南・藤沢で夫婦ふたりが営む小さなプライベートサロン。">
 <meta name="twitter:image" content="https://everglow-site.pages.dev/images/ogp.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,12 +53,12 @@
 <section class="subhero"><span class="ghost" aria-hidden="true">Gallery</span><h1><span class="en">Gallery</span><span class="jp">スタイルギャラリー</span></h1></section>
 <main class="page" id="main" tabindex="-1"><div class="wrap">
   <h2 class="vh">スタイルギャラリー</h2>
-  <div class="chips gchips" data-rev>
-    <a class="on" href="#" data-cat="">すべて</a>
-    <a href="#" data-cat="cut">カット</a>
-    <a href="#" data-cat="color">カラー</a>
-    <a href="#" data-cat="perm">パーマ</a>
-    <a href="#" data-cat="arrange">アレンジ</a>
+  <div class="chips gchips" data-rev role="group" aria-label="カテゴリで絞り込み">
+    <button class="on" type="button" data-cat="" aria-pressed="true">すべて</button>
+    <button type="button" data-cat="cut" aria-pressed="false">カット</button>
+    <button type="button" data-cat="color" aria-pressed="false">カラー</button>
+    <button type="button" data-cat="perm" aria-pressed="false">パーマ</button>
+    <button type="button" data-cat="arrange" aria-pressed="false">アレンジ</button>
   </div>
   <div class="ggrid" data-rev>
     <button class="gitem ph wide" type="button" data-cat="cut" data-label="ナチュラルショート" aria-label="ナチュラルショート を拡大表示"><img src="images/gallery-1.jpg" alt="" loading="lazy"></button>
