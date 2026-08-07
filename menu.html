@@ -21,6 +21,144 @@
 <meta name="twitter:title" content="Menu ｜ Everglow">
 <meta name="twitter:description" content="Everglow のメニュー・料金。カット・オーガニックカラー・パーマ・トリートメント／スパ。完全予約制の小さなプライベートサロン。">
 <meta name="twitter:image" content="https://everglow-site.pages.dev/images/ogp.jpg">
+<!-- 構造化データ：メニュー・料金（OfferCatalog。価格はデモ用） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Everglow",
+  "url": "https://everglow-site.pages.dev/",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "メニュー・料金",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "カット",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "5000",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "カット"
+            }
+          },
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "1500",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "前髪カット"
+            }
+          },
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "3000",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "キッズカット"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "カラー",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "8000",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "オーガニックカラー"
+            }
+          },
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "6500",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "リタッチカラー"
+            }
+          },
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "12000",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "ハイライト"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "パーマ",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "11000",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "デジタルパーマ"
+            }
+          },
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "9000",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "水パーマ"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "トリートメント・スパ",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "5500",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "プレミアムトリートメント"
+            }
+          },
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "9000",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "髪質改善トリートメント"
+            }
+          },
+          {
+            "@type": "Offer",
+            "priceCurrency": "JPY",
+            "price": "4000",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "ヘッドスパ"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -67,20 +205,22 @@
 <main class="page menu-page" id="main" tabindex="-1">
   <div class="wrap">
 
-    <div class="mcat" data-rev>
-      <h2 class="mcat__t"><span class="en">Cut</span><span class="jp">カット</span></h2>
-      <dl class="mlist">      <dt class="mitem__top"><span class="mitem__name">カット</span><span class="mitem__price">¥5,000<span class="min">／60分</span></span></dt>
+    <section class="mcat" data-rev aria-labelledby="mc-cut">
+      <h2 class="mcat__t" id="mc-cut"><span class="en">Cut</span><span class="jp">カット</span></h2>
+      <dl class="mlist">
+      <dt class="mitem__top"><span class="mitem__name">カット</span><span class="mitem__price">¥5,000<span class="min">／60分</span></span></dt>
       <dd class="mitem__desc">丁寧なカウンセリングで一人ひとりに合わせたスタイルをご提案。シャンプー・ブロー込み。</dd>
       <dt class="mitem__top"><span class="mitem__name">前髪カット</span><span class="mitem__price">¥1,500<span class="min">／15分</span></span></dt>
       <dd class="mitem__desc">前髪だけ整えたい方に。すきバサミ・毛量調整も可能です。</dd>
       <dt class="mitem__top"><span class="mitem__name">キッズカット</span><span class="mitem__price">¥3,000<span class="min">／30分</span></span></dt>
       <dd class="mitem__desc">小学生以下のお子さま。はじめてのカットも安心して。</dd>
       </dl>
-    </div>
+    </section>
 
-    <div class="mcat" data-rev>
-      <h2 class="mcat__t"><span class="en">Color</span><span class="jp">カラー</span></h2>
-      <dl class="mlist">      <dt class="mitem__top"><span class="mitem__name">オーガニックカラー</span><span class="mitem__price">¥8,000<span class="min">／90分</span></span></dt>
+    <section class="mcat" data-rev aria-labelledby="mc-color">
+      <h2 class="mcat__t" id="mc-color"><span class="en">Color</span><span class="jp">カラー</span></h2>
+      <dl class="mlist">
+      <dt class="mitem__top"><span class="mitem__name">オーガニックカラー</span><span class="mitem__price">¥8,000<span class="min">／90分</span></span></dt>
       <dd class="mitem__desc">髪と頭皮にやさしい薬剤を使用。深みのある色を、ダメージを抑えて表現します。</dd>
       <dt class="mitem__top"><span class="mitem__name">リタッチカラー</span><span class="mitem__price">¥6,500<span class="min">／60分</span></span></dt>
       <dd class="mitem__desc">伸びた根元だけを自然にカラーリング。白髪ぼかしにも対応します。</dd>
@@ -92,29 +232,31 @@
         <div class="mfeat__name">カラー ＋ カット</div>
         <div class="mfeat__price"><del>¥13,000</del><b>¥11,000</b><span class="min">／120分</span></div>
         <p class="mfeat__desc">初めての方におすすめ。カットとカラーをまとめて、お得にお試しいただけます。</p>
-        <p class="mfeat__desc">※ 初回限定メニューは、お電話または<a class="ul" href="contact.html" style="color:var(--gold);text-underline-offset:3px;">お問い合わせ</a>よりご予約ください。</p>
+        <p class="mfeat__desc">※ 初回限定メニューは、お電話または<a class="ul ul--gold" href="contact.html">お問い合わせ</a>よりご予約ください。</p>
       </div>
-    </div>
+    </section>
 
-    <div class="mcat" data-rev>
-      <h2 class="mcat__t"><span class="en">Perm</span><span class="jp">パーマ</span></h2>
-      <dl class="mlist">      <dt class="mitem__top"><span class="mitem__name">デジタルパーマ</span><span class="mitem__price">¥11,000<span class="min">／120分</span></span></dt>
+    <section class="mcat" data-rev aria-labelledby="mc-perm">
+      <h2 class="mcat__t" id="mc-perm"><span class="en">Perm</span><span class="jp">パーマ</span></h2>
+      <dl class="mlist">
+      <dt class="mitem__top"><span class="mitem__name">デジタルパーマ</span><span class="mitem__price">¥11,000<span class="min">／120分</span></span></dt>
       <dd class="mitem__desc">形状記憶でスタイリングが楽に。やわらかで自然なカールを長持ちさせます。</dd>
       <dt class="mitem__top"><span class="mitem__name">水パーマ</span><span class="mitem__price">¥9,000<span class="min">／100分</span></span></dt>
       <dd class="mitem__desc">ダメージを抑え、ふんわりとした自然な動きを表現します。</dd>
       </dl>
-    </div>
+    </section>
 
-    <div class="mcat" data-rev>
-      <h2 class="mcat__t"><span class="en">Treatment &amp; Spa</span><span class="jp">トリートメント・スパ</span></h2>
-      <dl class="mlist">      <dt class="mitem__top"><span class="mitem__name">プレミアムトリートメント</span><span class="mitem__price">¥5,500<span class="min">／45分</span></span></dt>
+    <section class="mcat" data-rev aria-labelledby="mc-spa">
+      <h2 class="mcat__t" id="mc-spa"><span class="en">Treatment &amp; Spa</span><span class="jp">トリートメント・スパ</span></h2>
+      <dl class="mlist">
+      <dt class="mitem__top"><span class="mitem__name">プレミアムトリートメント</span><span class="mitem__price">¥5,500<span class="min">／45分</span></span></dt>
       <dd class="mitem__desc">髪の内側から補修し、ツヤと指通りを取り戻す特別なケア。</dd>
       <dt class="mitem__top"><span class="mitem__name">髪質改善トリートメント</span><span class="mitem__price">¥9,000<span class="min">／90分</span></span></dt>
       <dd class="mitem__desc">繰り返すたびに扱いやすく。うねり・パサつきが気になる方へ。</dd>
       <dt class="mitem__top"><span class="mitem__name">ヘッドスパ</span><span class="mitem__price">¥4,000<span class="min">／30分</span></span></dt>
       <dd class="mitem__desc">頭皮をやさしくほぐし、心からリラックスできるひととき。</dd>
       </dl>
-    </div>
+    </section>
 
     <p class="mnote" data-rev>表示はすべて税込価格です。所要時間は目安です。<br>カラー・パーマの料金にカットは含まれません。髪の状態やご希望により変わる場合があります。完全予約制です。</p>
 
