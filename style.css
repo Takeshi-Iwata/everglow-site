@@ -400,6 +400,7 @@
 .prof__photo{width:160px;height:160px;border-radius:50%;margin:0 auto var(--sp-md);}
 .prof__name{text-align:center;font-size:var(--fs-xl);font-weight:var(--fw-medium);line-height:var(--lh-xl);letter-spacing:.06em;}
 .prof__en{display:block;text-align:center;font-family:var(--en);font-size:var(--fs-xs);letter-spacing:.12em;color:var(--text-subtle);margin:var(--sp-2xs) 0 var(--sp-lg);}
+.prof__role{font-family:var(--jp);}
 .prof__row{margin-bottom:var(--sp-md);}
 .prof__row:last-child{margin-bottom:0;}
 .prof__lbl{font-size:var(--fs-xs);font-weight:500;letter-spacing:.12em;color:var(--gold);margin-bottom:6px;}
