@@ -77,6 +77,12 @@
         go('date');
       })
     );
+    // トップのメニューカード等からの ?menu=<id> で自動選択→日付へ
+    const pre = new URLSearchParams(location.search).get('menu');
+    if (pre) {
+      const m = menus.find((x) => x.id === pre);
+      if (m) { state.menu = m; state.date = null; state.time = null; renderDates(); go('date'); }
+    }
   }
 
   /* ---------- Step 2: 日付（月間カレンダー。定休日・過去日は選択不可） ---------- */
