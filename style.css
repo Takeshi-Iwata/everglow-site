@@ -108,7 +108,7 @@
   .t-label-xs{font-family:var(--jp);font-weight:var(--fw-medium);font-size:var(--fs-xs);}
   .t-en{font-family:var(--en);font-weight:var(--fw-semibold);}
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
   body{background:var(--bg);color:var(--text);font-family:var(--jp);font-weight:400;line-height:1.75;font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   a{color:inherit;text-decoration:none;transition:color .2s ease,background .2s ease;}
   a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:var(--r-xs);}
